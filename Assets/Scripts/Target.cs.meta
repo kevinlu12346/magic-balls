@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 2f4cd0cf41e3a444195344f5915bf438
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - bullet: {instanceID: 0}
+  - fireBall: {instanceID: 0}
+  - lineRenderer: {instanceID: 0}
+  - player: {instanceID: 0}
+  - powerBall: {fileID: 6599420994208678925, guid: b633effbd3338b541a066233616ea248,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
