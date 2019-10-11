@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         currentState = PageState.start;
         //game.GetComponent<DeployShapes>().enabled = false;
         //this.GetComponent<Target>().enabled = false;
-    }
+     }
 
     // Update is called once per frame
     void Update()
@@ -88,42 +88,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("Slowed");
         BallMovement.multiplier = 1f;
     }
-/*
-    void setPageState(PageState state) {
-        switch (state) {
-            case PageState.none:
-            startMenu.setActive(false);
-            gameOverMenu.setActive(false);
-            respawnMenu.setActive(false);
-            upgradeMenu.setActive(false);
-            break;
-            case PageState.start:
-            startMenu.setActive(true);
-            gameOverMenu.setActive(false);
-            respawnMenu.setActive(false);
-            upgradeMenu.setActive(false);
-            break;
-            case PageState.gameover:
-            startMenu.setActive(false);
-            gameOverMenu.setActive(true);
-            respawnMenu.setActive(false);
-            upgradeMenu.setActive(false);
-            break;
-            case PageState.respawn:
-            startMenu.setActive(false);
-            gameOverMenu.setActive(false);
-            respawnMenu.setActive(true);
-            upgradeMenu.setActive(false);
-            break;
-            case PageState.upgrade:
-            startMenu.setActive(false);
-            gameOverMenu.setActive(false);
-            respawnMenu.setActive(false);
-            upgradeMenu.setActive(true);
-            break;
-        }
-    }
-*/
 
      IEnumerator moveDownDeactivate() {
          yield return new WaitForSeconds(10.0f);

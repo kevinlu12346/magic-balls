@@ -7,12 +7,12 @@ public class StartMenu : MonoBehaviour
 {
 
     public GameObject game;
-    public GameObject child;
+    private GameObject child;
     // Start is called before the first frame update
     void Start()
     {
         child = game.transform.Find("highscore").gameObject;
-        child.GetComponent<TextMeshPro>().text = GameManager.highScore.ToString();
+        child.GetComponent<TextMeshProUGUI>().SetText(GameManager.highScore.ToString());
         child = game.transform.Find("moneyScore").gameObject;
         child.GetComponent<TextMeshPro>().text = GameManager.money.ToString();
 

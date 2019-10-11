@@ -1321,7 +1321,7 @@ Transform:
   m_GameObject: {fileID: 1186198724}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.4, y: 4.43, z: -11.94}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalScale: {x: 0.12, y: 0.12, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -2140,6 +2140,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
   pauseCanvas: {fileID: 0}
+  reviveCanvas: {fileID: 0}
+  gameOverCanvas: {fileID: 0}
+  canvas: {fileID: 0}
+  child: {fileID: 0}
 --- !u!114 &1679114941
 MonoBehaviour:
   m_ObjectHideFlags: 0

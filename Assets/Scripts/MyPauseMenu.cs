@@ -12,6 +12,9 @@ public class MyPauseMenu : MonoBehaviour
     //public GameObject pauseCanvas;
     // Update is called once per frame
     public GameObject camera;
+    public GameObject gameCanvas;
+
+    public static bool gameOver = false;
     public void pause() {
         Debug.Log("pause");
         //pauseCanvas.GetComponent<MyPauseMenu>().enabled = false;
@@ -23,6 +26,7 @@ public class MyPauseMenu : MonoBehaviour
 
     }
 
+
     public void Update() {
 /*
         if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
@@ -31,7 +35,11 @@ public class MyPauseMenu : MonoBehaviour
         }
 */
 
-
+        if (gameOver == true) {
+            child = gameCanvas.transform.Find("pauseButton").gameObject;
+            child.GetComponent<Button>().enabled = false;
+            this.GetComponent<MyPauseMenu>().enabled = false;
+        }
 
         if (Input.GetMouseButtonDown(0)) {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -51,7 +59,7 @@ public class MyPauseMenu : MonoBehaviour
             } else {
                 // resume game
                 Time.timeScale = 1f;
-                camera.GetComponent<Target>().enabled = true;
+                camera.GetComponent<Target>().enabled = true; // stop player aimer
                 child = transform.Find("PauseMenu").gameObject;
                 child.SetActive(false);
             }

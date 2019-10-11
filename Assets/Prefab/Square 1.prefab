@@ -304,8 +304,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   bullet: {fileID: 0}
+  ranLostFunction: 0
   powerBall: {fileID: 0}
   ball: {fileID: 0}
+  explosion: {fileID: 4922552245995623135, guid: c0c5df2ab17efd140a0a37fd9bfb4ef6,
+    type: 3}
 --- !u!61 &4182374607787293586
 BoxCollider2D:
   m_ObjectHideFlags: 0

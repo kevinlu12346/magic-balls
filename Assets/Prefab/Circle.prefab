@@ -118,8 +118,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   bullet: {fileID: 6756249740383494894, guid: e26e5d53eb5d00249886e30a79c7ad2a, type: 3}
+  ranLostFunction: 0
   powerBall: {fileID: 0}
   ball: {fileID: 0}
+  explosion: {fileID: 4922552245995623135, guid: c0c5df2ab17efd140a0a37fd9bfb4ef6,
+    type: 3}
 --- !u!58 &1952293843189646514
 CircleCollider2D:
   m_ObjectHideFlags: 0

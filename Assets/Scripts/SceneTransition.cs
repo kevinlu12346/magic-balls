@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class SceneTransition : MonoBehaviour
 {
@@ -10,10 +11,12 @@ public class SceneTransition : MonoBehaviour
     // 1 = game
     public GameObject camera;
     public GameObject pauseCanvas;
-    public void hel () {
-        Debug.Log("hel)");
-        //pauseCanvas.GetComponent<MyPauseMenu>().enabled = false;
-    }
+    public GameObject reviveCanvas;
+    public GameObject gameOverCanvas;
+    public GameObject canvas;
+
+    public GameObject child;
+    public static bool gameOver = false;
 
     public void loadGame() {
         Debug.Log("dankaaaaaaaaaaaaaaaaaaaaaaaaaa");
@@ -22,12 +25,83 @@ public class SceneTransition : MonoBehaviour
         }
         SceneManager.LoadScene(0);
     }
+
+    public void loadUpgradePage() {
+        Debug.Log("skrllzezx");
+        SceneManager.LoadScene(4);
+    }
+
     void Start()
     {
     }
 
     void Update()
     {
+        /*
+        Scene scene = SceneManager.GetActiveScene();
+        if (Input.GetMouseButtonDown(0)  && scene.buildIndex == 0) {
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
+            if(EventSystem.current.IsPointerOverGameObject())
+            {
+                // clicked on button
+                Debug.Log("clicked on UI with tag invisible");
+                if (EventSystem.current.currentSelectedGameObject != null) {
+                    Debug.Log(EventSystem.current.currentSelectedGameObject.name);
+
+                    if (EventSystem.current.currentSelectedGameObject.name == "upgradeButton") {
+                        Debug.Log("destank");
+                    }
+                } else {
+                    // start game
+                    SceneManager.LoadScene(1);
+                }
+            }
+        }
+        */
+
+        Scene scene = SceneManager.GetActiveScene();
+        if (Input.GetMouseButtonDown(0) && scene.buildIndex == 0) {
+
+          Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+          Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
+
+          RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
+
+
+          if (EventSystem.current.IsPointerOverGameObject()) {
+              // click upgrade button load upgrade page
+          } else if (hit.collider != null) {
+              // else start game
+              if (hit.collider.gameObject.name == "background") {
+                  /*
+                  currentState = PageState.game;
+                  //Debug.Log("change to gamestate");
+                  startMenu.SetActive(false);
+                  game.GetComponent<DeployShapes>().enabled = true;
+                  this.GetComponent<Target>().enabled = true;
+                  */
+                  SceneManager.LoadScene(1);
+               }
+              //hit.collider.attachedRigidbody.AddForce(Vector2.up);
+          }
+      }
+
+
+        if (gameOver == true) {
+            gameOver = false;
+            child = reviveCanvas.transform.Find("revivePanel").gameObject;
+            child.SetActive(true);
+            Debug.Log("skrtt");
+            camera.GetComponent<Target>().enabled = false;
+            camera.GetComponent<TargetRight>().enabled = false;
+            camera.GetComponent<TargetLeft>().enabled = false;
+            child = canvas.transform.Find("Game").gameObject;
+            child.SetActive(false);
+
+            Shape.moveDownEndGame = false;
+            //StartCoroutine(loadEndGamePanel());
+        }
         /*
         if (Input.GetMouseButtonDown(0)) {
             Debug.Log("dankerino");
@@ -43,28 +117,18 @@ public class SceneTransition : MonoBehaviour
             }
         }
 */
-        Scene scene = SceneManager.GetActiveScene();
-        if (Input.GetMouseButtonDown(0) && scene.buildIndex == 0) {
 
-          Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-          Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
-
-          RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-          if (hit.collider != null) {
-
-              if (hit.collider.gameObject.name == "background") {
-                  /*
-                  currentState = PageState.game;
-                  //Debug.Log("change to gamestate");
-                  startMenu.SetActive(false);
-                  game.GetComponent<DeployShapes>().enabled = true;
-                  this.GetComponent<Target>().enabled = true;
-                  */
-                  SceneManager.LoadScene(1);
-               }
-              //hit.collider.attachedRigidbody.AddForce(Vector2.up);
-          }
-      }
     }
+
+         IEnumerator loadEndGamePanel() {
+             Debug.Log("loadingendpanel");
+             Time.timeScale = 1f;
+             yield return new WaitForSeconds(5.0f);
+             Debug.Log("after 5 secs");
+             child = gameOverCanvas.transform.Find("gameOverPanel").gameObject;
+             child.SetActive(true);
+             child = reviveCanvas.transform.Find("revivePanel").gameObject;
+             child.SetActive(false);
+         }
 
 }

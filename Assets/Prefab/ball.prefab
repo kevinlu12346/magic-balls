@@ -54,6 +54,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 6756249740383494894}
+  type: 0
+  explosion: {fileID: 4922552245995623135, guid: c0c5df2ab17efd140a0a37fd9bfb4ef6,
+    type: 3}
 --- !u!212 &6756249740383494895
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -125,7 +128,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 0
+  m_GravityScale: 0.03
   m_Material: {fileID: 6200000, guid: 58a9366d1f33de649987b20f55a9efce, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1

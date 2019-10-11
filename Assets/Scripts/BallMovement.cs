@@ -10,6 +10,7 @@ public class BallMovement : MonoBehaviour
     private int health = 1;
     public GameObject ball;
     public static float multiplier = 1;
+    public int type;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,12 +31,19 @@ public class BallMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision) {
         // destroy balls if they cross the red line
-        if (collision.collider.tag == "brick") {
+        if (collision.collider.tag == "brick" && type == 1) {
+          Destroy(gameObject);
+          PlayerController.rightBalls++;
+        }
+        if (collision.collider.tag == "brick" && type == 0) {
           Destroy(gameObject);
           PlayerController.balls++;
         }
-
-
+        // right ball
+        if (collision.collider.tag == "brick" && type == 2) {
+          Destroy(gameObject);
+          PlayerController.leftBalls++;
+        }
 
 
         /*

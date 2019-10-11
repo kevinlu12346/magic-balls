@@ -24,7 +24,7 @@ public class DeployShapes : MonoBehaviour
 
     private GameObject child; // text
     public static bool running = true;
-
+    public GameObject explosion;
 
     public float respawnTime;
     public float height2;
@@ -75,8 +75,7 @@ public class DeployShapes : MonoBehaviour
 
 
             void Update() {
-
-
+                //explosion.GetComponent<ParticleSystem>().Play();
             }
 
 
@@ -186,6 +185,7 @@ public class DeployShapes : MonoBehaviour
             IEnumerator wave() {
               while (running) {
                 spawnShapes();
+                Debug.Log("dankerino pepperino");
                 yield return new WaitForSeconds(respawnTime);
               }
               if (!running) {
