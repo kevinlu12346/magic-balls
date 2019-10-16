@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public static int score;
     public static bool deactivateSpeed = false;
     public static int highScore = 0;
-    public static int money = 997;
+    public static int money = 99999997;
 
 
     public GameObject canvas;
@@ -98,5 +98,5 @@ public class GameManager : MonoBehaviour
 
     }
 
-    
+
 }

@@ -29,6 +29,10 @@ public class Target : MonoBehaviour
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);     // The colour the damageImage is set to, to flash.
     public Color lineColour;
     public static bool warning = false;
+    Renderer rend;
+    public Material[] material;
+    TrailRenderer myTrailRenderer;
+
     // Start is called before the first frame update
     void Start()
     {
