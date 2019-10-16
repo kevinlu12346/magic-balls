@@ -15,17 +15,10 @@ public class MyPauseMenu : MonoBehaviour
     public GameObject gameCanvas;
 
     public static bool gameOver = false;
-    public void pause() {
-        Debug.Log("pause");
-        //pauseCanvas.GetComponent<MyPauseMenu>().enabled = false;
-        child = transform.Find("PauseMenu").gameObject;
-        child.SetActive(true);
-        Time.timeScale = 0;
-        camera.GetComponent<Target>().enabled = false;
-
-
+    public void Start() {
+        gameOver = false;
+        isPaused = false;
     }
-
 
     public void Update() {
 /*
@@ -34,13 +27,18 @@ public class MyPauseMenu : MonoBehaviour
             Debug.Log(UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject);
         }
 */
-
+ /*
         if (gameOver == true) {
+            gameOver = false;
             child = gameCanvas.transform.Find("pauseButton").gameObject;
             child.GetComponent<Button>().enabled = false;
-            this.GetComponent<MyPauseMenu>().enabled = false;
+            this.transform.Find("MyPauseMenu").GetComponent<MyPauseMenu>().enabled = false;
+        } else if (gameOver == false) {
+            child = gameCanvas.transform.Find("pauseButton").gameObject;
+            child.GetComponent<Button>().enabled = true;
+            this.GetComponent<MyPauseMenu>().enabled = true;
         }
-
+*/
         if (Input.GetMouseButtonDown(0)) {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
@@ -56,45 +54,16 @@ public class MyPauseMenu : MonoBehaviour
                 if (EventSystem.current.currentSelectedGameObject.name == "exitButton") {
                     Debug.Log("destank");
                 }
+
             } else {
                 // resume game
                 Time.timeScale = 1f;
                 camera.GetComponent<Target>().enabled = true; // stop player aimer
-                child = transform.Find("PauseMenu").gameObject;
-                child.SetActive(false);
+                this.transform.gameObject.SetActive(false);
+
             }
         }
 
-
-/*
-        GraphicRaycaster gr = this.GetComponent<GraphicRaycaster>();
-        //Create the PointerEventData with null for the EventSystem
-        PointerEventData ped = new PointerEventData(null);
-        //Set required parameters, in this case, mouse position
-        ped.position = Input.mousePosition;
-        //Create list to receive all results
-        List<RaycastResult> results = new List<RaycastResult>();
-        //Raycast it
-        gr.Raycast(mousePos2D, results);
-*/
-
-/*
-        LayerMask mask = LayerMask.GetMask("button");
-      RaycastHit2D hit = Physics2D.GraphicsRayCast(mousePos2D, Vector2.zero, mask);
-
-
-     //if (hit.collider != null) {
-         Debug.Log(hit.collider.gameObject.name);
-*/
-/*
-        if ( hit.collider.gameObject.name != "exitButton") {
-            Time.timeScale = 1f;
-            camera.GetComponent<Target>().enabled = true;
-            child = transform.Find("PauseMenu").gameObject;
-            child.SetActive(false);
-        }
-    }
-*/
     }
 
 }

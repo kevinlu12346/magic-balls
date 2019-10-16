@@ -6,28 +6,17 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
 
-    public GameObject startMenu;
-    public GameObject gameOverMenu;
-    public GameObject respawnMenu;
-    public GameObject upgradeMenu;
-    public GameObject child;
-    public GameObject childMoney;
+
+    private GameObject child;
+    private GameObject childMoney;
 
     public static int score;
     public static bool deactivateSpeed = false;
     public static int highScore = 0;
-    public static int money = 0;
+    public static int money = 997;
 
-    public enum PageState {
-        start,
-        game,
-        gameover,
-        respawn,
-        upgrade
-    }
-    public static PageState currentState;
 
-    public GameObject game;
+    public GameObject canvas;
 
     public static bool frozen = false;
     bool running = false;
@@ -35,17 +24,21 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentState = PageState.start;
-        //game.GetComponent<DeployShapes>().enabled = false;
-        //this.GetComponent<Target>().enabled = false;
-     }
+        frozen = false;
+        deactivateSpeed = false;
+        score = 0;
+
+    }
 
     // Update is called once per frame
     void Update()
     {
         // update score
-        child = game.transform.Find("score").gameObject;
-        child.GetComponent<TextMeshPro>().text = GameManager.score.ToString();
+
+            child = canvas.transform.Find("score").gameObject;
+            child.GetComponent<TextMeshPro>().text = GameManager.score.ToString();
+
+
         if (Shape.moveDown == false) {
             StartCoroutine(moveDownDeactivate());
         }
@@ -55,7 +48,7 @@ public class GameManager : MonoBehaviour
             StartCoroutine(speedDeactivate());
         }
 
-        childMoney = game.transform.Find("moneyScore").gameObject;
+        childMoney = canvas.transform.Find("moneyScore").gameObject;
         childMoney.GetComponent<TextMeshPro>().text = GameManager.money.ToString();
 
 
@@ -104,4 +97,6 @@ public class GameManager : MonoBehaviour
         // activated when you touch the screen
 
     }
+
+    
 }

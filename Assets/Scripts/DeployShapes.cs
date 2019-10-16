@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Linq;
 
 public class DeployShapes : MonoBehaviour
 {
@@ -41,6 +42,10 @@ public class DeployShapes : MonoBehaviour
              // Start is called before the first frame update
             void Start()
             {
+                nLine = 0;
+                running = true;
+
+
                 int total = getLineTotal();
                 int beginHealthRow1 =(int) (total / 12);
                 int beginHealthRow2 =  beginHealthRow1 + (int)PlayerController.firePower;
@@ -56,7 +61,7 @@ public class DeployShapes : MonoBehaviour
                     a.transform.position = new Vector2((float)positionsX[i], height2);
                     a.GetComponent<Shape>().health = beginHealthRow1;
                     child = a.transform.Find("ShapeText").gameObject;
-                    child.GetComponent<TextMeshPro>().SetText((beginHealthRow1.ToString()));
+                    child.GetComponent<TextMeshPro>().SetText(( AbbrevationUtility.AbbreviateNumber(beginHealthRow1)));
                 }
 
 
@@ -67,7 +72,7 @@ public class DeployShapes : MonoBehaviour
                     a1.transform.position = new Vector2((float)positionsX[i], height1);
                     a1.GetComponent<Shape>().health = beginHealthRow1;
                     child = a1.transform.Find("ShapeText").gameObject;
-                    child.GetComponent<TextMeshPro>().SetText((beginHealthRow1.ToString()));
+                    child.GetComponent<TextMeshPro>().SetText(AbbrevationUtility.AbbreviateNumber(beginHealthRow1));
                 }
 
                 StartCoroutine(wave());
@@ -76,6 +81,7 @@ public class DeployShapes : MonoBehaviour
 
             void Update() {
                 //explosion.GetComponent<ParticleSystem>().Play();
+
             }
 
 
@@ -99,7 +105,7 @@ public class DeployShapes : MonoBehaviour
                   g.transform.position = new Vector2((float)positionsX[spawnPositionForBigShape], spawnHeight + 0.45f);
                   g.GetComponent<Shape>().health = total;
                   child = g.transform.Find("ShapeText").gameObject;
-                  child.GetComponent<TextMeshPro>().SetText((total.ToString()));
+                  child.GetComponent<TextMeshPro>().SetText(AbbrevationUtility.AbbreviateNumber(total));
 
 
 
@@ -125,19 +131,19 @@ public class DeployShapes : MonoBehaviour
                        g.transform.position = new Vector2((float)positionsX[spawnPositionForPowerUp], spawnHeight);
                        g.GetComponent<Shape>().health =(int)total / 4;
                        child = g.transform.Find("ShapeText").gameObject;
-                       child.GetComponent<TextMeshPro>().SetText((((int)total/4).ToString()));
+                       child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(((int)total/4))  );
                    } else if (powerUpType >= 31 && powerUpType < 60) {
                        GameObject g = Instantiate(powerBall) as GameObject;
                        g.transform.position = new Vector2((float)positionsX[spawnPositionForPowerUp], spawnHeight);
                        g.GetComponent<Shape>().health =(int)total / 4;
                        child = g.transform.Find("ShapeText").gameObject;
-                       child.GetComponent<TextMeshPro>().SetText((((int)total/4).ToString()));
+                       child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(((int)total/4))  );
                    } else if (powerUpType >= 61) {
                        GameObject g = Instantiate(freeze) as GameObject;
                        g.transform.position = new Vector2((float)positionsX[spawnPositionForPowerUp], spawnHeight);
                        g.GetComponent<Shape>().health =(int)total / 4;
                        child = g.transform.Find("ShapeText").gameObject;
-                       child.GetComponent<TextMeshPro>().SetText((((int)total/4).ToString()));
+                       child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(((int)total/4))  );
                    }
 
 
@@ -269,31 +275,31 @@ public class DeployShapes : MonoBehaviour
                   g2.transform.position = new Vector2((float)positionsX[i],spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
-                  child.GetComponent<TextMeshPro>().SetText((healths[z].ToString()));
+                  child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
                 } else if (shapes[i] == 2) {
                   GameObject g2 = Instantiate(Circle) as GameObject;
                   g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
-                  child.GetComponent<TextMeshPro>().SetText((healths[z].ToString()));
+                  child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
                 } else if (shapes[i] == 3) {
                   GameObject g2 = Instantiate(Diamond) as GameObject;
                   g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
-                  child.GetComponent<TextMeshPro>().SetText((healths[z].ToString()));
+                  child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
                 } else if (shapes[i] == 4) {
                   GameObject g2 = Instantiate(Pentagon) as GameObject;
                   g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
-                  child.GetComponent<TextMeshPro>().SetText((healths[z].ToString()));
+                  child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
                 } else if (shapes[i] == 5) {
                   GameObject g2 = Instantiate(Hexagon) as GameObject;
                   g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
-                  child.GetComponent<TextMeshPro>().SetText((healths[z].ToString()));
+                  child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
                 } else if (shapes[i] == 6) {
                         int roll = Random.Range(0, 4);
                         if (roll == 0) {
@@ -301,28 +307,28 @@ public class DeployShapes : MonoBehaviour
                         g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                         g2.GetComponent<Shape>().health = healths[z];
                         child = g2.transform.Find("ShapeText").gameObject;
-                        child.GetComponent<TextMeshPro>().SetText((healths[z].ToString()));
+                        child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
 
                         } else if (roll == 1) {
                         GameObject g2 = Instantiate(Triangle2) as GameObject;
                         g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                         g2.GetComponent<Shape>().health = healths[z];
                         child = g2.transform.Find("ShapeText").gameObject;
-                        child.GetComponent<TextMeshPro>().SetText((healths[z].ToString()));
+                        child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
 
                         } else if (roll == 2) {
                         GameObject g2 = Instantiate(Triangle3) as GameObject;
                         g2.transform.position = new Vector2((float)positionsX[i],spawnHeight);
                         g2.GetComponent<Shape>().health = healths[z];
                         child = g2.transform.Find("ShapeText").gameObject;
-                        child.GetComponent<TextMeshPro>().SetText((healths[z].ToString()));
+                        child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
 
                         } else if (roll == 3) {
                         GameObject g2 = Instantiate(Triangle4) as GameObject;
                         g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                         g2.GetComponent<Shape>().health = healths[z];
                         child = g2.transform.Find("ShapeText").gameObject;
-                        child.GetComponent<TextMeshPro>().SetText((healths[z].ToString()));
+                        child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
 
                         }
                 } else if (shapes[i] == 7) {
@@ -330,7 +336,7 @@ public class DeployShapes : MonoBehaviour
                     g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                     g2.GetComponent<Shape>().health = healths[z];
                     child = g2.transform.Find("ShapeText").gameObject;
-                    child.GetComponent<TextMeshPro>().SetText((healths[z].ToString()));
+                    child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
                 }
                 z++;
               }
@@ -350,31 +356,32 @@ public class DeployShapes : MonoBehaviour
                   g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
-                  child.GetComponent<TextMeshPro>().SetText((healths[z].ToString()));
+                  child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
+
                 } else if (shapes[i] == 2) {
                   GameObject g2 = Instantiate(Circle) as GameObject;
                   g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
-                  child.GetComponent<TextMeshPro>().SetText((healths[z].ToString()));
+                  child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
                 } else if (shapes[i] == 3) {
                   GameObject g2 = Instantiate(Diamond) as GameObject;
                   g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
-                  child.GetComponent<TextMeshPro>().SetText((healths[z].ToString()));
+                  child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
                 } else if (shapes[i] == 4) {
                   GameObject g2 = Instantiate(Pentagon) as GameObject;
                   g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
-                  child.GetComponent<TextMeshPro>().SetText((healths[z].ToString()));
+                  child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
                 } else if (shapes[i] == 5) {
                   GameObject g2 = Instantiate(Hexagon) as GameObject;
                   g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
-                  child.GetComponent<TextMeshPro>().SetText((healths[z].ToString()));
+                  child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
                 } else if (shapes[i] == 6) {
                         int roll = Random.Range(0, 4);
                         if (roll == 0) {
@@ -382,28 +389,28 @@ public class DeployShapes : MonoBehaviour
                         g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                         g2.GetComponent<Shape>().health = healths[z];
                         child = g2.transform.Find("ShapeText").gameObject;
-                        child.GetComponent<TextMeshPro>().SetText((healths[z].ToString()));
+                        child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
 
                         } else if (roll == 1) {
                         GameObject g2 = Instantiate(Triangle2) as GameObject;
                         g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                         g2.GetComponent<Shape>().health = healths[z];
                         child = g2.transform.Find("ShapeText").gameObject;
-                        child.GetComponent<TextMeshPro>().SetText((healths[z].ToString()));
+                        child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
 
                         } else if (roll == 2) {
                         GameObject g2 = Instantiate(Triangle3) as GameObject;
                         g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                         g2.GetComponent<Shape>().health = healths[z];
                         child = g2.transform.Find("ShapeText").gameObject;
-                        child.GetComponent<TextMeshPro>().SetText((healths[z].ToString()));
+                        child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
 
                         } else if (roll == 3) {
                         GameObject g2 = Instantiate(Triangle4) as GameObject;
                         g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                         g2.GetComponent<Shape>().health = healths[z];
                         child = g2.transform.Find("ShapeText").gameObject;
-                        child.GetComponent<TextMeshPro>().SetText((healths[z].ToString()));
+                        child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
 
                         }
                 }
@@ -426,31 +433,31 @@ public class DeployShapes : MonoBehaviour
                   g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
-                  child.GetComponent<TextMeshPro>().SetText((healths[z].ToString()));
+                  child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
                 } else if (shapes[i] == 2) {
                   GameObject g2 = Instantiate(Circle) as GameObject;
                   g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
-                  child.GetComponent<TextMeshPro>().SetText((healths[z].ToString()));
+                  child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
                 } else if (shapes[i] == 3) {
                   GameObject g2 = Instantiate(Diamond) as GameObject;
                   g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
-                  child.GetComponent<TextMeshPro>().SetText((healths[z].ToString()));
+                  child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
                 } else if (shapes[i] == 4) {
                   GameObject g2 = Instantiate(Pentagon) as GameObject;
                   g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
-                  child.GetComponent<TextMeshPro>().SetText((healths[z].ToString()));
+                  child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
                 } else if (shapes[i] == 5) {
                   GameObject g2 = Instantiate(Hexagon) as GameObject;
                   g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
-                  child.GetComponent<TextMeshPro>().SetText((healths[z].ToString()));
+                  child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
                 } else if (shapes[i] == 6) {
                         int roll = Random.Range(0, 4);
                         if (roll == 0) {
@@ -458,28 +465,28 @@ public class DeployShapes : MonoBehaviour
                         g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                         g2.GetComponent<Shape>().health = healths[z];
                         child = g2.transform.Find("ShapeText").gameObject;
-                        child.GetComponent<TextMeshPro>().SetText((healths[z].ToString()));
+                        child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
 
                         } else if (roll == 1) {
                         GameObject g2 = Instantiate(Triangle2) as GameObject;
                         g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                         g2.GetComponent<Shape>().health = healths[z];
                         child = g2.transform.Find("ShapeText").gameObject;
-                        child.GetComponent<TextMeshPro>().SetText((healths[z].ToString()));
+                        child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
 
                         } else if (roll == 2) {
                         GameObject g2 = Instantiate(Triangle3) as GameObject;
                         g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                         g2.GetComponent<Shape>().health = healths[z];
                         child = g2.transform.Find("ShapeText").gameObject;
-                        child.GetComponent<TextMeshPro>().SetText((healths[z].ToString()));
+                        child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
 
                         } else if (roll == 3) {
                         GameObject g2 = Instantiate(Triangle4) as GameObject;
                         g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                         g2.GetComponent<Shape>().health = healths[z];
                         child = g2.transform.Find("ShapeText").gameObject;
-                        child.GetComponent<TextMeshPro>().SetText((healths[z].ToString()));
+                        child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
 
                         }
                 }
@@ -489,8 +496,8 @@ public class DeployShapes : MonoBehaviour
 
             // get line total
             int getLineTotal() {
-                int total = (int)PlayerController.firePowerAlgorithm * (int)PlayerController.PlayerNumBalls * 5;
-                return total;
+                int total = (int)PlayerController.firePowerAlgorithm * (int)PlayerController.numberBalls;
+                return total   * 2 *3;
             }
             // returns array of size x that sum to total
             int[] generateXNumbersSumToTotal(int x, int total) {
@@ -511,4 +518,30 @@ public class DeployShapes : MonoBehaviour
 
 
 
+                 public static class AbbrevationUtility
+                 {
+                     private static readonly SortedDictionary<long, string> abbrevations = new SortedDictionary<long, string>
+                     {
+                         {1000,"K"},
+                         {1000000, "M" },
+                         {1000000000, "B" },
+                         {1000000000000,"T"}
+                     };
+
+                     public static string AbbreviateNumber(float number)
+                     {
+                         if (number >= 10000) {
+                             for (int i = abbrevations.Count - 1; i >= 0; i--)
+                             {
+                                 KeyValuePair<long, string> pair = abbrevations.ElementAt(i);
+                                 if (Mathf.Abs(number) >= pair.Key)
+                                 {
+                                     int roundedNumber = Mathf.FloorToInt(number / pair.Key);
+                                     return roundedNumber.ToString() + pair.Value;
+                                 }
+                             }
+                         }
+                         return number.ToString();
+                     }
+                 }
 }

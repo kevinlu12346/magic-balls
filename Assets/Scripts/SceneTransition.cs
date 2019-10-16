@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
-public class SceneTransition : MonoBehaviour
+ public class SceneTransition : MonoBehaviour
 {
 
     // 0 = startMenu
@@ -15,26 +15,27 @@ public class SceneTransition : MonoBehaviour
     public GameObject gameOverCanvas;
     public GameObject canvas;
 
-    public GameObject child;
+    private GameObject child;
     public static bool gameOver = false;
 
+
     public void loadGame() {
-        Debug.Log("dankaaaaaaaaaaaaaaaaaaaaaaaaaa");
         if (GameManager.score > GameManager.highScore) {
             GameManager.highScore = GameManager.score;
         }
+
         SceneManager.LoadScene(0);
     }
 
     public void loadUpgradePage() {
-        Debug.Log("skrllzezx");
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(2);
     }
 
     void Start()
     {
-    }
+        gameOver = false;
 
+    }
     void Update()
     {
         /*
@@ -74,13 +75,11 @@ public class SceneTransition : MonoBehaviour
           } else if (hit.collider != null) {
               // else start game
               if (hit.collider.gameObject.name == "background") {
-                  /*
-                  currentState = PageState.game;
-                  //Debug.Log("change to gamestate");
-                  startMenu.SetActive(false);
-                  game.GetComponent<DeployShapes>().enabled = true;
-                  this.GetComponent<Target>().enabled = true;
-                  */
+
+
+                  // start game
+                  //child = canvas.transform.Find("Game").gameObject;
+                  //child.SetActive(true);
                   SceneManager.LoadScene(1);
                }
               //hit.collider.attachedRigidbody.AddForce(Vector2.up);
@@ -88,16 +87,17 @@ public class SceneTransition : MonoBehaviour
       }
 
 
+
+
         if (gameOver == true) {
             gameOver = false;
             child = reviveCanvas.transform.Find("revivePanel").gameObject;
             child.SetActive(true);
-            Debug.Log("skrtt");
             camera.GetComponent<Target>().enabled = false;
             camera.GetComponent<TargetRight>().enabled = false;
             camera.GetComponent<TargetLeft>().enabled = false;
-            child = canvas.transform.Find("Game").gameObject;
-            child.SetActive(false);
+            //child = canvas.transform.Find("Game").gameObject;
+            //child.SetActive(false);
 
             Shape.moveDownEndGame = false;
             //StartCoroutine(loadEndGamePanel());

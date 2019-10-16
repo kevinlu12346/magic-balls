@@ -122,5 +122,20 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 0.03
       objectReference: {fileID: 0}
+    - target: {fileID: 4449133477043753789, guid: e26e5d53eb5d00249886e30a79c7ad2a,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449133477043753789, guid: e26e5d53eb5d00249886e30a79c7ad2a,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.094221115
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449133477043753789, guid: e26e5d53eb5d00249886e30a79c7ad2a,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.atime0
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e26e5d53eb5d00249886e30a79c7ad2a, type: 3}

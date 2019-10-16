@@ -102,6 +102,12 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7257025106311298435, guid: cff67ea6fb250e3499531c96a30526ef,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 4922552245995623135, guid: c0c5df2ab17efd140a0a37fd9bfb4ef6,
+        type: 3}
     - target: {fileID: 7176290793107093285, guid: cff67ea6fb250e3499531c96a30526ef,
         type: 3}
       propertyPath: m_Mesh

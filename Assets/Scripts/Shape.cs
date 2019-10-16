@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Linq;
+
+
 
 public class Shape : MonoBehaviour
 {
@@ -14,45 +17,61 @@ public class Shape : MonoBehaviour
     float moveSpeed = 0.2f;
     private bool danger = false;
     public GameObject powerBall;
-    public GameObject ball;
     public GameObject explosion;
 
 
-
-
+    public GameObject[] myObjects;
     void Start()
     {
         child = transform.Find("ShapeText").gameObject;
-
-
+        ranLostFunction = false;
+        moveDownEndGame = true;
+        moveDown = true;
 
     }
 
     void Update()
     {
+
+
         // move blocks down each frame
         if (moveDown && moveDownEndGame) {
         transform.position = new Vector2(transform.position.x, transform.position.y - (float)moveSpeed *Time.deltaTime);
         } else {
         //transform.position = new Vector2(transform.position.x, transform.position.y + (float)moveSpeed *Time.deltaTime);
         }
-
-        // lose game
-        if (transform.position.y <= -2.5 && ranLostFunction == false) {
-            ranLostFunction = true;
-            Target.gameOver = true;
-            MyPauseMenu.gameOver = true;
-            //GameManager.score = 0;
-            SceneTransition.gameOver = true;
+        if (transform.position.y <= -1.5) {
+            Target.warning = true;
         }
+        // lose game
+        /*
+        if (transform.position.y <= -3 && ranLostFunction == false) {
+
+            ranLostFunction = true;
+            //Target.gameOver = true;
+            SceneTransition.gameOver = true;
+            Time.timeScale = 0f;
+        }
+        */
+        /*
+        // destroy all balls
+        myObjects = GameObject.FindGameObjectsWithTag("ball");
+        foreach(GameObject obj in myObjects) {
+            Destroy(obj);
+        }
+        */
     }
 
 
     void OnCollisionEnter2D(Collision2D collision) {
-
+         if (collision.collider.tag == "redLine") {
+             SceneTransition.gameOver = true;
+             Time.timeScale = 0f;
+         }
          if (collision.collider.tag == "ball") {
             health -= PlayerController.firePower;
-            child.GetComponent<TextMeshPro>().SetText(health.ToString());
+            child.GetComponent<TextMeshPro>().SetText(AbbrevationUtility.AbbreviateNumber(health));
+
             int damageScore = 0;
             if (health > 0) {
                 damageScore = PlayerController.firePower;
@@ -71,13 +90,17 @@ public class Shape : MonoBehaviour
                 b.transform.position = m_Position;
                 b.GetComponent<Rigidbody2D>().velocity = Vector2.down * 220;
                 // add player total ball count
-                PlayerController.PlayerNumBalls++;
+                PlayerController.numberBalls++;
             } else if(gameObject.tag == "powerball") {
+                GameObject boom = Instantiate(explosion);
+                boom.transform.position = new Vector3(transform.position.x, transform.position.y, -5.39f);
                 Target.isPower = true;
                 Target.bullet = powerBall;
                 //StartCoroutine(Target.powerBallDeactivate());
                 Destroy(gameObject);
             } else if (gameObject.tag == "freeze") {
+                GameObject boom = Instantiate(explosion);
+                boom.transform.position = new Vector3(transform.position.x, transform.position.y, -5.39f);
                 moveDown = false;
 
                 DeployShapes.running = false;
@@ -91,10 +114,16 @@ public class Shape : MonoBehaviour
                 }
                 */
             } else if (gameObject.tag == "speed") {
+                GameObject boom = Instantiate(explosion);
+                boom.transform.position = new Vector3(transform.position.x, transform.position.y, -5.39f);
                 GameManager.deactivateSpeed = true;
                 Destroy(gameObject);
             } else if (gameObject.tag == "money") {
-                GameManager.money++;
+                GameObject boom = Instantiate(explosion);
+                boom.transform.position = new Vector3(transform.position.x, transform.position.y, -5.39f);
+                if (GameManager.money < 999) {
+                    GameManager.money++;
+                }
                 Destroy(gameObject);
             }
              else {
@@ -112,5 +141,32 @@ public class Shape : MonoBehaviour
     }
 
 
+
+     public static class AbbrevationUtility
+     {
+         private static readonly SortedDictionary<long, string> abbrevations = new SortedDictionary<long, string>
+         {
+             {1000,"K"},
+             {1000000, "M" },
+             {1000000000, "B" },
+             {1000000000000,"T"}
+         };
+
+         public static string AbbreviateNumber(float number)
+         {
+             if (number >= 10000) {
+                 for (int i = abbrevations.Count - 1; i >= 0; i--)
+                 {
+                     KeyValuePair<long, string> pair = abbrevations.ElementAt(i);
+                     if (Mathf.Abs(number) >= pair.Key)
+                     {
+                         int roundedNumber = Mathf.FloorToInt(number / pair.Key);
+                         return roundedNumber.ToString() + pair.Value;
+                     }
+                 }
+             }
+             return number.ToString();
+         }
+     }
 
 }

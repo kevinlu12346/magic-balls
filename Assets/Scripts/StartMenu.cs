@@ -11,11 +11,13 @@ public class StartMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         child = game.transform.Find("highscore").gameObject;
         child.GetComponent<TextMeshProUGUI>().SetText(GameManager.highScore.ToString());
+
+
         child = game.transform.Find("moneyScore").gameObject;
         child.GetComponent<TextMeshPro>().text = GameManager.money.ToString();
-
         // reset game variables
         Time.timeScale = 1f;
         PlayerController.firePower = PlayerController.firePowerAlgorithm;
@@ -32,4 +34,5 @@ public class StartMenu : MonoBehaviour
     {
 
     }
+
 }

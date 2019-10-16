@@ -55,8 +55,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 6756249740383494894}
   type: 0
-  explosion: {fileID: 4922552245995623135, guid: c0c5df2ab17efd140a0a37fd9bfb4ef6,
-    type: 3}
 --- !u!212 &6756249740383494895
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -188,7 +186,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.42
+  m_Time: 0.3
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -196,8 +194,8 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.006668091
-        value: 0.08461571
+        time: 0
+        value: 0.094236374
         inSlope: -0.13313757
         outSlope: -0.13313757
         tangentMode: 0
@@ -206,7 +204,7 @@ TrailRenderer:
         outWeight: 0.34899235
       - serializedVersion: 3
         time: 1
-        value: 0
+        value: 0.048076928
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -218,7 +216,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.05248642, g: 1, b: 0, a: 1}
+      key0: {r: 0.05248642, g: 1, b: 0, a: 0.70980394}
       key1: {r: 0.05248642, g: 1, b: 0, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -235,7 +233,7 @@ TrailRenderer:
       ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 26214
+      atime1: 65535
       atime2: 23901
       atime3: 0
       atime4: 0

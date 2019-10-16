@@ -587,10 +587,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: 2d2824e7-d4e2-4619-b8aa-728123f5e0a7
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: Magic Balls
+  organizationId: kevinlu12346
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
