@@ -25,6 +25,8 @@ public class UpgradeMenu : MonoBehaviour
     public static float[] fireSpeedValues = {0.2f, 0.19f, 0.18f, 0.17f, 0.16f, 0.15f, 0.14f, 0.13f, 0.12f, 0.11f, 0.10f, 0.09f, 0.08f, 0.07f, 0.06f, 0.05f, 0.04f, 0.03f};
     private GameObject child;
     public GameObject game;
+    public GameObject fadecanvas;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,6 +72,10 @@ public class UpgradeMenu : MonoBehaviour
 
         child = game.transform.Find("moneyScore").gameObject;
         child.GetComponent<TextMeshPro>().text = GameManager.money.ToString();
+
+        child = fadecanvas.transform.Find("panelFadeTransition").gameObject;
+        child.SetActive(true);
+        StartCoroutine(turnOffCanvas(0.5f));
     }
 
     // Update is called once per frame
@@ -138,7 +144,7 @@ public class UpgradeMenu : MonoBehaviour
                 child.GetComponent<TextMeshPro>().SetText("Max");
 
             } else {
-
+                Debug.Log("stacked");
                 numberBallsCost += 10;
                 child = transform.Find("Image").Find("scrollCanvas").Find("shooterStats").Find("numberBalls").Find("level").Find("levelText").gameObject;
                 child.GetComponent<TextMeshProUGUI>().SetText(numberBallsLevel.ToString());
@@ -147,6 +153,12 @@ public class UpgradeMenu : MonoBehaviour
             }
         }
     }
+    IEnumerator turnOffCanvas(float seconds) {
+        yield return new WaitForSeconds(seconds);
+        child = fadecanvas.transform.Find("panelFadeTransition").gameObject;
+        child.SetActive(false);
+    }
+
 
     public void upgradeLeftFireball() {
         if (GameManager.money >= leftFireBallCost && leftNumberBallsLevel < 100) {

@@ -9,6 +9,7 @@ public class StartMenu : MonoBehaviour
     public GameObject game;
     private GameObject child;
     // Start is called before the first frame update
+    public GameObject canvas;
     void Start()
     {
 
@@ -26,7 +27,9 @@ public class StartMenu : MonoBehaviour
         DeployShapes.running = true;
         Target.isPower = false;
         DeployShapes.nLine = 0;
-
+        child = canvas.transform.Find("panelFadeTransition").gameObject;
+        child.SetActive(true);
+        StartCoroutine(turnOffCanvas(0.5f));
     }
 
     // Update is called once per frame
@@ -34,5 +37,10 @@ public class StartMenu : MonoBehaviour
     {
 
     }
+    IEnumerator turnOffCanvas(float seconds) {
+        yield return new WaitForSeconds(seconds);
+        child = canvas.transform.Find("panelFadeTransition").gameObject;
+        child.SetActive(false);
 
+    }
 }

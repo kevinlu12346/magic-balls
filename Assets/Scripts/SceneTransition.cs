@@ -18,7 +18,13 @@ using UnityEngine.EventSystems;
     private GameObject child;
     public static bool gameOver = false;
 
+    public Animator transitionAnim;
 
+    IEnumerator LoadSceneAnim () {
+    //    transitionAnim.setTrigger("end");
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(1);
+    }
     public void loadGame() {
         if (GameManager.score > GameManager.highScore) {
             GameManager.highScore = GameManager.score;
@@ -72,7 +78,10 @@ using UnityEngine.EventSystems;
 
           if (EventSystem.current.IsPointerOverGameObject()) {
               // click upgrade button load upgrade page
-          } else if (hit.collider != null) {
+              Debug.Log("wanker");
+              Debug.Log(EventSystem.current.currentSelectedGameObject);
+          }
+           else if (hit.collider != null) {
               // else start game
               if (hit.collider.gameObject.name == "background") {
 

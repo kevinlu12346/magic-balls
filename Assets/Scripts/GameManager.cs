@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
 
     public GameObject canvas;
+    public GameObject fadecanvas;
 
     public static bool frozen = false;
     bool running = false;
@@ -27,7 +28,12 @@ public class GameManager : MonoBehaviour
         frozen = false;
         deactivateSpeed = false;
         score = 0;
+        child = fadecanvas.transform.Find("panelFadeTransition").gameObject;
+        child.SetActive(true);
+        StartCoroutine(turnOffCanvas(0.5f));
 
+
+    
     }
 
     // Update is called once per frame
@@ -75,6 +81,12 @@ public class GameManager : MonoBehaviour
 
       */
     }
+    IEnumerator turnOffCanvas(float seconds) {
+        yield return new WaitForSeconds(seconds);
+        child = fadecanvas.transform.Find("panelFadeTransition").gameObject;
+        child.SetActive(false);
+    }
+
 
     IEnumerator speedDeactivate() {
         yield return new WaitForSeconds(10.0f);
