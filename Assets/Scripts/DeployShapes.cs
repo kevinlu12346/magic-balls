@@ -45,7 +45,7 @@ public class DeployShapes : MonoBehaviour
                 nLine = 0;
                 running = true;
 
-
+                Time.timeScale = 1f;
                 int total = getLineTotal();
                 int beginHealthRow1 =(int) (total / 12);
                 int beginHealthRow2 =  beginHealthRow1 + (int)PlayerController.firePower;

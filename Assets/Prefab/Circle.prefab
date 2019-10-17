@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8257598645876743902}
   - component: {fileID: 9121857552384111315}
   - component: {fileID: 1952293843189646514}
+  - component: {fileID: 7404882851507767251}
   m_Layer: 0
   m_Name: Circle
   m_TagString: circle
@@ -120,9 +121,9 @@ MonoBehaviour:
   bullet: {fileID: 6756249740383494894, guid: e26e5d53eb5d00249886e30a79c7ad2a, type: 3}
   ranLostFunction: 0
   powerBall: {fileID: 0}
-  ball: {fileID: 0}
   explosion: {fileID: 4922552245995623135, guid: c0c5df2ab17efd140a0a37fd9bfb4ef6,
     type: 3}
+  myObjects: []
 --- !u!58 &1952293843189646514
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -139,6 +140,25 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!95 &7404882851507767251
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6652271334194931482}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2d4199f4b64d1d44eaf48bf5e6410b3c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6844851096920767400
 GameObject:
   m_ObjectHideFlags: 0

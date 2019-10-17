@@ -219,6 +219,7 @@ GameObject:
   - component: {fileID: 1975938753880297404}
   - component: {fileID: 9145782236368150559}
   - component: {fileID: 2460594002868661492}
+  - component: {fileID: 5294584102520109770}
   m_Layer: 0
   m_Name: Polygon
   m_TagString: shape
@@ -305,9 +306,9 @@ MonoBehaviour:
   bullet: {fileID: 0}
   ranLostFunction: 0
   powerBall: {fileID: 0}
-  ball: {fileID: 0}
   explosion: {fileID: 4922552245995623135, guid: c0c5df2ab17efd140a0a37fd9bfb4ef6,
     type: 3}
+  myObjects: []
 --- !u!60 &2460594002868661492
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -338,3 +339,22 @@ PolygonCollider2D:
       - {x: -0.2938926, y: -0.40450853}
       - {x: 0.29389268, y: -0.40450847}
       - {x: 0.47552824, y: 0.15450856}
+--- !u!95 &5294584102520109770
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975938753880297405}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2d4199f4b64d1d44eaf48bf5e6410b3c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6637674271972503462}
   - component: {fileID: 6657065006444583245}
   - component: {fileID: 991562274452517009}
+  - component: {fileID: 4714946377488650102}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: shape
@@ -98,9 +99,9 @@ MonoBehaviour:
   bullet: {fileID: 0}
   ranLostFunction: 0
   powerBall: {fileID: 0}
-  ball: {fileID: 0}
   explosion: {fileID: 4922552245995623135, guid: c0c5df2ab17efd140a0a37fd9bfb4ef6,
     type: 3}
+  myObjects: []
 --- !u!60 &991562274452517009
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -131,6 +132,25 @@ PolygonCollider2D:
       - {x: -0.50465894, y: -0.49969262}
       - {x: 0.13730803, y: -0.5008686}
       - {x: 0.5075455, y: -0.5033687}
+--- !u!95 &4714946377488650102
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6637674271972503457}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2d4199f4b64d1d44eaf48bf5e6410b3c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6637674273116691302
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1778288460004724967}
   - component: {fileID: 1778288460004724960}
-  - component: {fileID: 1116313562707799773}
   - component: {fileID: 8642213653218338267}
+  - component: {fileID: 6126658118853916400}
+  - component: {fileID: 3576604400010736938}
   m_Layer: 0
   m_Name: LargeSquare
   m_TagString: shape
@@ -82,8 +83,46 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &1116313562707799773
-BoxCollider2D:
+--- !u!114 &8642213653218338267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778288460004724961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fac9116049d2524787ecc4aa321ee46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  bullet: {fileID: 0}
+  ranLostFunction: 0
+  powerBall: {fileID: 0}
+  explosion: {fileID: 4922552245995623135, guid: c0c5df2ab17efd140a0a37fd9bfb4ef6,
+    type: 3}
+  myObjects: []
+--- !u!95 &6126658118853916400
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778288460004724961}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2d4199f4b64d1d44eaf48bf5e6410b3c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!60 &3576604400010736938
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -105,28 +144,12 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &8642213653218338267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1778288460004724961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fac9116049d2524787ecc4aa321ee46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  bullet: {fileID: 0}
-  ranLostFunction: 0
-  powerBall: {fileID: 0}
-  ball: {fileID: 0}
-  explosion: {fileID: 4922552245995623135, guid: c0c5df2ab17efd140a0a37fd9bfb4ef6,
-    type: 3}
+  m_Points:
+    m_Paths:
+    - - {x: -0.5, y: -0.5}
+      - {x: -0.5, y: 0.5}
+      - {x: 0.5, y: 0.5}
+      - {x: 0.5, y: -0.5}
 --- !u!1 &6510591081842362139
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,7 +18,10 @@ public class Shape : MonoBehaviour
     private bool danger = false;
     public GameObject powerBall;
     public GameObject explosion;
-
+    Animator anim;
+    PolygonCollider2D collider;
+    SpriteRenderer renderer;
+    CircleCollider2D circleCollider;
 
     public GameObject[] myObjects;
     void Start()
@@ -27,7 +30,10 @@ public class Shape : MonoBehaviour
         ranLostFunction = false;
         moveDownEndGame = true;
         moveDown = true;
-
+        anim = gameObject.GetComponent<Animator>();
+        collider = gameObject.GetComponent<PolygonCollider2D>();
+        renderer = gameObject.GetComponent<SpriteRenderer>();
+        circleCollider = gameObject.GetComponent<CircleCollider2D>();
     }
 
     void Update()
@@ -82,9 +88,14 @@ public class Shape : MonoBehaviour
             // if destroy circle shape then spawn an extra bullet
             if (health <= 0) {
               if (gameObject.tag == "circle") {
+                anim.enabled = true;
+                circleCollider.enabled = false;
+                child = transform.Find("ShapeText").gameObject;
+                child.GetComponent<TextMeshPro>().enabled = false;
+                destroyAfter(0.57f);
+
                 GameObject boom = Instantiate(explosion);
                 boom.transform.position = new Vector3(transform.position.x, transform.position.y, -5.39f);
-                Destroy(gameObject);
                 GameObject b = Instantiate(bullet) as GameObject;
                 Vector3 m_Position = gameObject.transform.position;
                 b.transform.position = m_Position;
@@ -124,13 +135,22 @@ public class Shape : MonoBehaviour
                 if (GameManager.money < 999) {
                     GameManager.money++;
                 }
-                Destroy(gameObject);
+                anim.enabled = true;
+                collider.enabled = false;
+                child = transform.Find("ShapeText").gameObject;
+                child.GetComponent<TextMeshPro>().enabled = false;
+                destroyAfter(0.57f);
             }
              else {
+                 anim.enabled = true;
+                 collider.enabled = false;
+                 child = transform.Find("ShapeText").gameObject;
+                 child.GetComponent<TextMeshPro>().enabled = false;
+
                  GameObject boom = Instantiate(explosion);
                  boom.transform.position = new Vector3(transform.position.x, transform.position.y, -5.39f);
-                 Destroy(gameObject);
-
+                 //Destroy(gameObject);
+                 destroyAfter(0.57f);
                  //gameObject.SetActive(false);
               }
             }
@@ -139,7 +159,12 @@ public class Shape : MonoBehaviour
 
         }
     }
+    IEnumerator destroyAfter(float seconds) {
 
+        yield return new WaitForSeconds(seconds);
+        Destroy(gameObject);
+
+    }
 
 
      public static class AbbrevationUtility
