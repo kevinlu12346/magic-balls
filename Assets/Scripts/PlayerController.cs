@@ -23,14 +23,14 @@ public class PlayerController : MonoBehaviour
 
 
     // right cannon
-    public static int rightBalls = 100;
-    public static int rightBallsAlgorithm = 100;
-    public static int rightNumberBalls = 100; // total number of balls in current run
+    public static int rightBalls = 0;
+    public static int rightBallsAlgorithm = 0;
+    public static int rightNumberBalls = 0; // total number of balls in current run
 
     // left cannon
-    public static int leftBalls = 190;
-    public static int leftBallsAlgorithm = 100;
-    public static int leftNumberBalls = 100; // total number of balls in current run
+    public static int leftBalls = 0;
+    public static int leftBallsAlgorithm = 0;
+    public static int leftNumberBalls = 0; // total number of balls in current run
 
 
     // Start is called before the first frame update
@@ -48,6 +48,5 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(numberBalls);
-    }
+     }
 }

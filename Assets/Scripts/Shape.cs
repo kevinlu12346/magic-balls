@@ -19,9 +19,13 @@ public class Shape : MonoBehaviour
     public GameObject powerBall;
     public GameObject explosion;
     Animator anim;
+    Animator onHitAnim;
+    public GameObject onHit;
+
     PolygonCollider2D collider;
     SpriteRenderer renderer;
     CircleCollider2D circleCollider;
+    public bool waiting = true;
 
     public GameObject[] myObjects;
     void Start()
@@ -31,6 +35,7 @@ public class Shape : MonoBehaviour
         moveDownEndGame = true;
         moveDown = true;
         anim = gameObject.GetComponent<Animator>();
+        waiting = true;
         collider = gameObject.GetComponent<PolygonCollider2D>();
         renderer = gameObject.GetComponent<SpriteRenderer>();
         circleCollider = gameObject.GetComponent<CircleCollider2D>();
@@ -38,7 +43,6 @@ public class Shape : MonoBehaviour
 
     void Update()
     {
-
 
         // move blocks down each frame
         if (moveDown && moveDownEndGame) {
@@ -75,15 +79,28 @@ public class Shape : MonoBehaviour
              Time.timeScale = 0f;
          }
          if (collision.collider.tag == "ball") {
+
             health -= PlayerController.firePower;
             child.GetComponent<TextMeshPro>().SetText(AbbrevationUtility.AbbreviateNumber(health));
 
             int damageScore = 0;
             if (health > 0) {
+                onHit = transform.Find("onHitAnimation").gameObject;
+                onHitAnim = onHit.GetComponent<Animator>();
+                if (waiting == true) {
+                    Debug.Log("entered");
+                    onHitAnim.enabled = true;
+                    waiting = false;
+                    StartCoroutine(deactivateAfter(0.35f));
+                }
+
+
+
                 damageScore = PlayerController.firePower;
             } else if (health <= 0) {
                 damageScore = health + PlayerController.firePower;
             }
+
             GameManager.score += damageScore;
             // if destroy circle shape then spawn an extra bullet
             if (health <= 0) {
@@ -92,7 +109,7 @@ public class Shape : MonoBehaviour
                 circleCollider.enabled = false;
                 child = transform.Find("ShapeText").gameObject;
                 child.GetComponent<TextMeshPro>().enabled = false;
-                destroyAfter(0.57f);
+                StartCoroutine(destroyAfter(0.95f));
 
                 GameObject boom = Instantiate(explosion);
                 boom.transform.position = new Vector3(transform.position.x, transform.position.y, -5.39f);
@@ -139,10 +156,12 @@ public class Shape : MonoBehaviour
                 collider.enabled = false;
                 child = transform.Find("ShapeText").gameObject;
                 child.GetComponent<TextMeshPro>().enabled = false;
-                destroyAfter(0.57f);
+                StartCoroutine(destroyAfter(0.95f));
             }
              else {
                  anim.enabled = true;
+                // deactivateAfter(1f);
+
                  collider.enabled = false;
                  child = transform.Find("ShapeText").gameObject;
                  child.GetComponent<TextMeshPro>().enabled = false;
@@ -150,7 +169,7 @@ public class Shape : MonoBehaviour
                  GameObject boom = Instantiate(explosion);
                  boom.transform.position = new Vector3(transform.position.x, transform.position.y, -5.39f);
                  //Destroy(gameObject);
-                 destroyAfter(0.57f);
+                 StartCoroutine(destroyAfter(0.95f));
                  //gameObject.SetActive(false);
               }
             }
@@ -160,12 +179,17 @@ public class Shape : MonoBehaviour
         }
     }
     IEnumerator destroyAfter(float seconds) {
-
         yield return new WaitForSeconds(seconds);
         Destroy(gameObject);
 
     }
-
+    IEnumerator deactivateAfter(float seconds) {
+        yield return new WaitForSeconds(seconds);
+        onHitAnim.enabled = false;
+        waiting = true;
+        onHit = transform.Find("onHitAnimation").gameObject;
+        onHit.transform.localScale = new Vector3(0,0,0);
+    }
 
      public static class AbbrevationUtility
      {

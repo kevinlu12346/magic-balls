@@ -9,7 +9,7 @@ public class Target : MonoBehaviour
     public static GameObject bullet;
     public GameObject ball;
     public GameObject fireBall;
-    public static float fireRate = UpgradeMenu.fireSpeedValues[UpgradeMenu.fireSpeedLevel - 1];
+    public static float fireRate = UpgradeMenu.fireSpeedValues[0];
     private float nextFire;
     public LineRenderer lineRenderer;
     public GameObject player;
@@ -45,8 +45,8 @@ public class Target : MonoBehaviour
 
 
         //fireRate = UpgradeMenu.fireSpeedValues[UpgradeMenu.fireSpeedLevel - 1];
-        fireRate = UpgradeMenu.fireSpeedValues[17];
-
+        //fireRate = UpgradeMenu.fireSpeedValues[17];
+        fireRate = .02f; // change firerate here
     }
 
     void Awake() {
@@ -57,7 +57,6 @@ public class Target : MonoBehaviour
         PlayerController.rightNumberBalls = PlayerController.rightBallsAlgorithm;
         PlayerController.leftBalls = PlayerController.leftBallsAlgorithm;
         PlayerController.leftNumberBalls = PlayerController.leftBallsAlgorithm;
-
 
 
     }

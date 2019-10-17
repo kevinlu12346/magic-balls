@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 6637674271972503457, guid: a892f1d87e8a89e489ee152cfc2c8fdf,
         type: 3}
       propertyPath: m_Name
-      value: Triangle (1)
+      value: Triangle (1) Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6637674271972503463, guid: a892f1d87e8a89e489ee152cfc2c8fdf,
         type: 3}
@@ -100,12 +100,12 @@ PrefabInstance:
     - target: {fileID: 6637674273116691300, guid: a892f1d87e8a89e489ee152cfc2c8fdf,
         type: 3}
       propertyPath: m_havePropertiesChanged
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6637674273116691300, guid: a892f1d87e8a89e489ee152cfc2c8fdf,
         type: 3}
       propertyPath: m_isInputParsingRequired
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a892f1d87e8a89e489ee152cfc2c8fdf, type: 3}
