@@ -19,6 +19,8 @@ using UnityEngine.EventSystems;
     public static bool gameOver = false;
 
     public Animator transitionAnim;
+    public static string currBall = "greyBall";
+
 
     IEnumerator LoadSceneAnim () {
     //    transitionAnim.setTrigger("end");
@@ -44,6 +46,7 @@ using UnityEngine.EventSystems;
     }
     void Update()
     {
+        Debug.Log("ball is " + currBall);
         /*
         Scene scene = SceneManager.GetActiveScene();
         if (Input.GetMouseButtonDown(0)  && scene.buildIndex == 0) {

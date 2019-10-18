@@ -3721,8 +3721,8 @@ GameObject:
   - component: {fileID: 1679114943}
   - component: {fileID: 1679114946}
   - component: {fileID: 1679114942}
-  - component: {fileID: 1679114941}
   - component: {fileID: 1679114940}
+  - component: {fileID: 1679114941}
   - component: {fileID: 1679114945}
   m_Layer: 0
   m_Name: Main Camera
@@ -3803,7 +3803,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f4cd0cf41e3a444195344f5915bf438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball: {fileID: 8725413299600231641, guid: 7c71f4028fc0c014292e5238b84e3fc8, type: 3}
   fireBall: {fileID: 2159052027362785715, guid: 71e20bae0d818ca49855cac5df11803c,
     type: 3}
   lineRenderer: {fileID: 636523424}
@@ -3817,6 +3816,19 @@ MonoBehaviour:
   lineColour: {r: 1, g: 0, b: 0, a: 1}
   material:
   - {fileID: 2100000, guid: 3e1b2ea542d07c147b9abecbb1f5ca98, type: 2}
+  ballsColours:
+  - {fileID: 6950275495871420650, guid: d0cc0c4dbdcb6b7498f4b7447644e0aa, type: 3}
+  - {fileID: 455955179373345766, guid: 06804d2f7046c614bb1ea1ac21f5e819, type: 3}
+  - {fileID: 3502874877164695213, guid: b3d7ffc7570b3ba4e9dc7ea91dfb9b6c, type: 3}
+  - {fileID: 9197310403538849291, guid: b49ea1d8a3602c94992804ee8614fed4, type: 3}
+  - {fileID: 6885461217155497320, guid: 4d08ae5b2559c4a4a87689dca1c8c319, type: 3}
+  - {fileID: 1520116777456671239, guid: 6d21ce0e7eb3f2543866e585fd2ff72b, type: 3}
+  - {fileID: 1178991900585739389, guid: 9d2fe6e8a4b461c4593fac43eb668f3b, type: 3}
+  - {fileID: 6756249740383494894, guid: e26e5d53eb5d00249886e30a79c7ad2a, type: 3}
+  - {fileID: 1758405288901971440, guid: 3a8b8352da906e2408e220f5730af778, type: 3}
+  - {fileID: 8725413299600231641, guid: 7c71f4028fc0c014292e5238b84e3fc8, type: 3}
+  - {fileID: 3599049623155425853, guid: d9669c203530ce5408945f3842f66a89, type: 3}
+  - {fileID: 4173620167303149560, guid: 54a331925bae25b4b9ae077abb24afea, type: 3}
 --- !u!114 &1679114942
 MonoBehaviour:
   m_ObjectHideFlags: 0

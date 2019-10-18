@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Target : MonoBehaviour
 {
     public static GameObject bullet;
-    public GameObject ball;
+    private GameObject ball;
     public GameObject fireBall;
     public static float fireRate = UpgradeMenu.fireSpeedValues[0];
     private float nextFire;
@@ -33,6 +33,10 @@ public class Target : MonoBehaviour
     public Material[] material;
     TrailRenderer myTrailRenderer;
 
+
+
+    public GameObject[] ballsColours;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,21 +46,56 @@ public class Target : MonoBehaviour
         warning = false;
         firedFireBall = false;
 
-
-
-        //fireRate = UpgradeMenu.fireSpeedValues[UpgradeMenu.fireSpeedLevel - 1];
-        //fireRate = UpgradeMenu.fireSpeedValues[17];
-        fireRate = .02f; // change firerate here
-    }
-
-    void Awake() {
         PlayerController.balls = PlayerController.ballsAlgorithm;
         PlayerController.numberBalls = PlayerController.ballsAlgorithm;
-        bullet = ball;
         PlayerController.rightBalls = PlayerController.rightBallsAlgorithm;
         PlayerController.rightNumberBalls = PlayerController.rightBallsAlgorithm;
         PlayerController.leftBalls = PlayerController.leftBallsAlgorithm;
         PlayerController.leftNumberBalls = PlayerController.leftBallsAlgorithm;
+
+
+        //fireRate = UpgradeMenu.fireSpeedValues[UpgradeMenu.fireSpeedLevel - 1];
+        //fireRate = UpgradeMenu.fireSpeedValues[17];
+        fireRate = 0.02f; // change firerate here
+
+        Debug.Log("selected ball is " + SceneTransition.currBall);
+        if (SceneTransition.currBall == "greyBall") {
+            bullet = ballsColours[0];
+        }
+        else if (SceneTransition.currBall == "redBall") {
+            bullet = ballsColours[1];
+        }
+        else if (SceneTransition.currBall == "purpleBall") {
+            bullet = ballsColours[2];
+        }
+        else if (SceneTransition.currBall == "yellowBall") {
+            bullet = ballsColours[3];
+        }
+        else if (SceneTransition.currBall == "blueBall") {
+            bullet = ballsColours[4];
+        }
+        else if (SceneTransition.currBall == "orangeBall") {
+            bullet = ballsColours[5];
+        }
+        else if (SceneTransition.currBall == "greenBall") {
+            bullet = ballsColours[6];
+        }
+        else if (SceneTransition.currBall == "cyanBall") {
+            bullet = ballsColours[7];
+        }
+        else if (SceneTransition.currBall == "pinkBall") {
+            bullet = ballsColours[8];
+        }
+        else if (SceneTransition.currBall == "whiteBall") {
+            bullet = ballsColours[9];
+        }
+        bullet = ballsColours[11];
+
+    }
+
+    void Awake() {
+        //Debug.Log("selected ball is " + Themes.currSelectedBall.name);
+        //ball = cyanBall;
 
 
     }
@@ -186,10 +225,10 @@ public class Target : MonoBehaviour
         float x = 0.5f * Mathf.Cos(radian);
         float y = 0.5f * Mathf.Sin(radian);
         Vector3 temp = new Vector3(x ,y ,0);
-        b.transform.position += temp;
+        //b.transform.position += temp;
 
         // give bullet starting rotation
-        //b.transform.rotation =  Quaternion.Euler(0.0f, 0.0f, rotationZ); // rotates circle but no matter how u rotate circle it will always be a circle
+        b.transform.rotation =  Quaternion.Euler(0.0f, 0.0f, rotationZ); // rotates circle but no matter how u rotate circle it will always be a circle
         // give bullet velocity (Direction and speed)
         b.GetComponent<Rigidbody2D>().velocity = direction;
         PlayerController.balls--;
@@ -213,6 +252,8 @@ public class Target : MonoBehaviour
          yield return new WaitForSeconds(10.0f);
          PlayerController.firePower = PlayerController.firePowerAlgorithm;
          bullet = ball;
+
+         // bug fix this
          running = false;
      }
 }

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8197478836040964961}
   - component: {fileID: 4449133477043753789}
   m_Layer: 8
-  m_Name: ball
+  m_Name: cyanBall
   m_TagString: ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
