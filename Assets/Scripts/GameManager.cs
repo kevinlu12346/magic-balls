@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     public static int score;
     public static bool deactivateSpeed = false;
-    public static int highScore = 0;
+    public static int highScore = 10000020;
     public static int money = 99999997;
 
 
@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(turnOffCanvas(0.5f));
 
 
-    
+
     }
 
     // Update is called once per frame

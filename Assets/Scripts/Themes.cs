@@ -139,5 +139,120 @@ public class Themes : MonoBehaviour
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("whiteBall").Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
     }
+    public void selectGreyDiamond() {
 
+        //deactivate curr selected ball
+        currSelectedBall = currSelectedBall.transform.Find("selected").gameObject;
+        currSelectedBall.GetComponent<SpriteRenderer>().color =  new Color32(65, 65, 65, 255);
+        currSelectedBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("greyDiamond").gameObject;
+        SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("greyDiamond").gameObject.name;
+
+        child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("greyDiamond").Find("selected").gameObject;
+        child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
+    }
+    public void selectRedDiamond() {
+
+        //deactivate curr selected ball
+        currSelectedBall = currSelectedBall.transform.Find("selected").gameObject;
+        currSelectedBall.GetComponent<SpriteRenderer>().color =  new Color32(65, 65, 65, 255);
+
+        currSelectedBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("redDiamond").gameObject;
+        SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("redDiamond").gameObject.name;
+
+        child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("redDiamond").Find("selected").gameObject;
+        child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
+    }
+    public void selectPurpleDiamond() {
+
+        //deactivate curr selected ball
+        currSelectedBall = currSelectedBall.transform.Find("selected").gameObject;
+        currSelectedBall.GetComponent<SpriteRenderer>().color =  new Color32(65, 65, 65, 255);
+        currSelectedBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("purpleDiamond").gameObject;
+        SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("purpleDiamond").gameObject.name;
+
+        child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("purpleDiamond").Find("selected").gameObject;
+        child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
+    }
+    public void selectYellowDiamond() {
+
+        //deactivate curr selected ball
+        currSelectedBall = currSelectedBall.transform.Find("selected").gameObject;
+        currSelectedBall.GetComponent<SpriteRenderer>().color =  new Color32(65, 65, 65, 255);
+        currSelectedBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("yellowDiamond").gameObject;
+        SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("yellowDiamond").gameObject.name;
+
+        child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("yellowDiamond").Find("selected").gameObject;
+        child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
+    }
+    public void selectBlueDiamond() {
+
+        //deactivate curr selected ball
+        currSelectedBall = currSelectedBall.transform.Find("selected").gameObject;
+        currSelectedBall.GetComponent<SpriteRenderer>().color =  new Color32(65, 65, 65, 255);
+        currSelectedBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("blueDiamond").gameObject;
+        SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("blueDiamond").gameObject.name;
+
+        child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("blueDiamond").Find("selected").gameObject;
+        child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
+    }
+    public void selectOrangeDiamond() {
+
+        //deactivate curr selected ball
+        currSelectedBall = currSelectedBall.transform.Find("selected").gameObject;
+        currSelectedBall.GetComponent<SpriteRenderer>().color =  new Color32(65, 65, 65, 255);
+        currSelectedBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("orangeDiamond").gameObject;
+        SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("orangeDiamond").gameObject.name;
+
+        child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("orangeDiamond").Find("selected").gameObject;
+        child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
+    }
+    public void selectGreenDiamond() {
+
+        //deactivate curr selected ball
+        currSelectedBall = currSelectedBall.transform.Find("selected").gameObject;
+        currSelectedBall.GetComponent<SpriteRenderer>().color =  new Color32(65, 65, 65, 255);
+        currSelectedBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("greenDiamond").gameObject;
+        SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("greenDiamond").gameObject.name;
+
+
+
+
+        child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("greenDiamond").Find("selected").gameObject;
+        child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
+    }
+    public void selectCyanDiamond() {
+
+        //deactivate curr selected ball
+        currSelectedBall = currSelectedBall.transform.Find("selected").gameObject;
+        currSelectedBall.GetComponent<SpriteRenderer>().color =  new Color32(65, 65, 65, 255);
+        currSelectedBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("cyanDiamond").gameObject;
+        SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("cyanDiamond").gameObject.name;
+
+        // activate curr
+        child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("cyanDiamond").Find("selected").gameObject;
+        child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
+
+    }
+    public void selectPinkDiamond() {
+
+        //deactivate curr selected ball
+        currSelectedBall = currSelectedBall.transform.Find("selected").gameObject;
+        currSelectedBall.GetComponent<SpriteRenderer>().color =  new Color32(65, 65, 65, 255);
+        currSelectedBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("pinkDiamond").gameObject;
+        SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("pinkDiamond").gameObject.name;
+
+        child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("pinkDiamond").Find("selected").gameObject;
+        child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
+    }
+    public void selectWhiteDiamond() {
+
+        //deactivate curr selected ball
+        currSelectedBall = currSelectedBall.transform.Find("selected").gameObject;
+        currSelectedBall.GetComponent<SpriteRenderer>().color =  new Color32(65, 65, 65, 255);
+        currSelectedBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("whiteDiamond").gameObject;
+        SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("whiteDiamond").gameObject.name;
+
+        child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("whiteDiamond").Find("selected").gameObject;
+        child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
+    }
 }

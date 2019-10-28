@@ -10,7 +10,6 @@ public class Shape : MonoBehaviour
 {
     public int health;
     private GameObject child;
-    public GameObject bullet;
     public static bool moveDownEndGame = true;
     public static bool moveDown = true;
     public bool ranLostFunction = false;
@@ -113,7 +112,7 @@ public class Shape : MonoBehaviour
 
                 GameObject boom = Instantiate(explosion);
                 boom.transform.position = new Vector3(transform.position.x, transform.position.y, -5.39f);
-                GameObject b = Instantiate(bullet) as GameObject;
+                GameObject b = Instantiate(Target.bullet) as GameObject;
                 Vector3 m_Position = gameObject.transform.position;
                 b.transform.position = m_Position;
                 b.GetComponent<Rigidbody2D>().velocity = Vector2.down * 220;

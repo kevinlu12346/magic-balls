@@ -89,7 +89,37 @@ public class Target : MonoBehaviour
         else if (SceneTransition.currBall == "whiteBall") {
             bullet = ballsColours[9];
         }
-        bullet = ballsColours[11];
+        else if (SceneTransition.currBall == "greyDiamond") {
+            bullet = ballsColours[10];
+        }
+        else if (SceneTransition.currBall == "redDiamond") {
+            bullet = ballsColours[11];
+        }
+        else if (SceneTransition.currBall == "purpleDiamond") {
+            bullet = ballsColours[12];
+        }
+        else if (SceneTransition.currBall == "yellowDiamond") {
+            bullet = ballsColours[13];
+        }
+        else if (SceneTransition.currBall == "blueDiamond") {
+            bullet = ballsColours[14];
+        }
+        else if (SceneTransition.currBall == "orangeDiamond") {
+            bullet = ballsColours[15];
+        }
+        else if (SceneTransition.currBall == "greenDiamond") {
+            bullet = ballsColours[16];
+        }
+        else if (SceneTransition.currBall == "cyanDiamond") {
+            bullet = ballsColours[17];
+        }
+        else if (SceneTransition.currBall == "pinkDiamond") {
+            bullet = ballsColours[18];
+        }
+        else if (SceneTransition.currBall == "whiteDiamond") {
+            bullet = ballsColours[19];
+        }
+
 
     }
 
