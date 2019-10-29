@@ -44,6 +44,8 @@ public class DeployShapes : MonoBehaviour
             {
                 nLine = 0;
                 running = true;
+                Circle.transform.Find("ball").GetComponent<SpriteRenderer>().color = Target.bullet.GetComponent<SpriteRenderer>().color;
+                Circle.transform.Find("ball").GetComponent<SpriteRenderer>().sprite = Target.bullet.GetComponent<SpriteRenderer>().sprite;
 
                 Time.timeScale = 1f;
                 int total = getLineTotal();
@@ -81,6 +83,7 @@ public class DeployShapes : MonoBehaviour
 
             void Update() {
                 //explosion.GetComponent<ParticleSystem>().Play();
+                //Circle.transform.Find("ball").GetComponent<SpriteRenderer>().color = Target.bullet.GetComponent<SpriteRenderer>().color;
 
             }
 

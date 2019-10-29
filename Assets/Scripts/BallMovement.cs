@@ -12,6 +12,7 @@ public class BallMovement : MonoBehaviour
     public static float multiplier = 1;
     public int type;
     public static bool gameOver = false;
+    Vector3 currDir;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +22,17 @@ public class BallMovement : MonoBehaviour
         //Time.timeScale = 1f;
 
     }
-
+    void FixedUpdate()
+     {
+         currDir = new Vector3(transform.position.x, transform.position.y, 0);
+     }
     // Update is called once per frame
     void Update()
     {
+        Vector3 newDir = new Vector3(transform.position.x, transform.position.y, 0);
+        float newDirValue = Mathf.Atan2(newDir.y - currDir.y, newDir.x - currDir.x);
+        float newDirValueDeg = (180 / Mathf.PI) * newDirValue;
+        transform.rotation = Quaternion.Euler(0, 0, newDirValueDeg);
         if (gameOver == true) {
             // pause ball movements
             //Time.timeScale = 0f;

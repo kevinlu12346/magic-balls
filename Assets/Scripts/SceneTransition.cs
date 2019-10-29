@@ -21,7 +21,9 @@ using UnityEngine.EventSystems;
     public Animator transitionAnim;
     public static string currBall = "greyBall";
 
-
+    public void LoadThemePage () {
+        SceneManager.LoadScene(3);
+    }
     IEnumerator LoadSceneAnim () {
     //    transitionAnim.setTrigger("end");
         yield return new WaitForSeconds(1.5f);

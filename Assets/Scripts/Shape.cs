@@ -15,11 +15,12 @@ public class Shape : MonoBehaviour
     public bool ranLostFunction = false;
     float moveSpeed = 0.2f;
     private bool danger = false;
-    public GameObject powerBall;
     public GameObject explosion;
     Animator anim;
     Animator onHitAnim;
     public GameObject onHit;
+
+    public GameObject circle;
 
     PolygonCollider2D collider;
     SpriteRenderer renderer;
@@ -104,6 +105,7 @@ public class Shape : MonoBehaviour
             // if destroy circle shape then spawn an extra bullet
             if (health <= 0) {
               if (gameObject.tag == "circle") {
+                Destroy(circle);
                 anim.enabled = true;
                 circleCollider.enabled = false;
                 child = transform.Find("ShapeText").gameObject;
@@ -122,7 +124,8 @@ public class Shape : MonoBehaviour
                 GameObject boom = Instantiate(explosion);
                 boom.transform.position = new Vector3(transform.position.x, transform.position.y, -5.39f);
                 Target.isPower = true;
-                Target.bullet = powerBall;
+                Target.bulletPlaceHolder = Target.bullet;
+                Target.bullet = Target.powerBall;
                 //StartCoroutine(Target.powerBallDeactivate());
                 Destroy(gameObject);
             } else if (gameObject.tag == "freeze") {

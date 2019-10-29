@@ -1327,8 +1327,8 @@ LineRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 0.6415094, g: 0.57796365, b: 0.57796365, a: 0}
-      key1: {r: 1, g: 0, b: 0, a: 1}
-      key2: {r: 1, g: 0, b: 0, a: 1}
+      key1: {r: 1, g: 0, b: 0.20983982, a: 0.37254903}
+      key2: {r: 1, g: 0, b: 0, a: 0.37254903}
       key3: {r: 0.7075472, g: 0.51731044, b: 0.51731044, a: 1}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -3807,8 +3807,6 @@ MonoBehaviour:
     type: 3}
   lineRenderer: {fileID: 636523424}
   player: {fileID: 1089400190}
-  powerBall: {fileID: 6599420994208678925, guid: b633effbd3338b541a066233616ea248,
-    type: 3}
   damageImage: {fileID: 2085041387}
   line: {fileID: 1998879482}
   flashSpeed: 0.3
@@ -3837,6 +3835,27 @@ MonoBehaviour:
   - {fileID: 4173620167303149560, guid: 54a331925bae25b4b9ae077abb24afea, type: 3}
   - {fileID: 1645677322746780152, guid: 9d6f44a497fd0d04989c383e5711ab3e, type: 3}
   - {fileID: 6717532954374827676, guid: 25a1e4cbc7b08974b9b8236b02791df1, type: 3}
+  powerBalls:
+  - {fileID: 5682430278482364198, guid: 19f1d0f5d6ae8824890ba66a77d10147, type: 3}
+  - {fileID: 771971027890261580, guid: 3eaa7bc18463ba744890883815512798, type: 3}
+  - {fileID: 3364270336498321027, guid: a092d2cd5b6c24e4ca33b01a0d43d4ed, type: 3}
+  - {fileID: 7584901503247527306, guid: b8ecad340b7cd364e93df56e83b7a1ce, type: 3}
+  - {fileID: 8101172877797357559, guid: bbffeb8194ba0a34ea81375c52d5e485, type: 3}
+  - {fileID: 1033701248813234422, guid: 7e44452ebff02f2459b8e119415843c7, type: 3}
+  - {fileID: 1158328361939852438, guid: 183d1518148f6d249a5e27ca22d1101d, type: 3}
+  - {fileID: 6599420994208678925, guid: b633effbd3338b541a066233616ea248, type: 3}
+  - {fileID: 3934871676886406846, guid: a8273b9f8540a324eb9e21e0e3111f85, type: 3}
+  - {fileID: 4832274931688683523, guid: 6e4ed32ccce431644900b55846012b93, type: 3}
+  - {fileID: 5856244717002455793, guid: 3e8d9f1ab9ad857419057e89b85e3aa0, type: 3}
+  - {fileID: 669296216548908064, guid: 0c960977c44600049936e89f4c9bc2fb, type: 3}
+  - {fileID: 791831787786938428, guid: 0f0d9120d823ffb4ebb49e77b64d48ad, type: 3}
+  - {fileID: 559236715567987439, guid: 137d7e70fcb0bc24e823baa45ad4f661, type: 3}
+  - {fileID: 2038596241684514163, guid: 3ad123173daeb8d4f91985ecc821150e, type: 3}
+  - {fileID: 0}
+  - {fileID: 2943570377197542008, guid: c32398725ebb9db4a84667b3320138a9, type: 3}
+  - {fileID: 1339836857780739560, guid: 30e1a6aa78a163e4082f2135a39b6993, type: 3}
+  - {fileID: 6642780211961233815, guid: 4ae1732d72819a94fa53b2016b85a3a6, type: 3}
+  - {fileID: 6012430573313658532, guid: 2c8915bd14b39a84e82a8fa7556ca563, type: 3}
 --- !u!114 &1679114942
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -100,8 +100,10 @@
      <None Include="Assets\my-icons-collection (6)\backup.txt" />
      <None Include="Assets\Assets\my-icons-collection (5)\backup.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
+     <None Include="Assets\my-icons-collection (8)\backup.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
+     <None Include="Assets\my-icons-collection (9)\backup.txt" />
      <None Include="Assets\craftpix-443360-gems-gui\gems_gui\readme.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
  <Reference Include="Unity.TextMeshPro.Editor">

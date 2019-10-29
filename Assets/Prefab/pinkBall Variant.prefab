@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 1758405288901971440, guid: 3a8b8352da906e2408e220f5730af778,
         type: 3}
       propertyPath: m_Name
-      value: pinkBall
+      value: pinkBall Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7407423237183486894, guid: 3a8b8352da906e2408e220f5730af778,
         type: 3}

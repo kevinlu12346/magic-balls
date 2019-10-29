@@ -7,13 +7,14 @@ using UnityEngine.UI;
 public class Target : MonoBehaviour
 {
     public static GameObject bullet;
+    public static GameObject bulletPlaceHolder;
+    public static GameObject powerBall;
     private GameObject ball;
     public GameObject fireBall;
     public static float fireRate = UpgradeMenu.fireSpeedValues[0];
     private float nextFire;
     public LineRenderer lineRenderer;
     public GameObject player;
-    public GameObject powerBall;
     public static bool gameOver = false;
 
     public static bool isPower = false;
@@ -36,6 +37,8 @@ public class Target : MonoBehaviour
 
 
     public GameObject[] ballsColours;
+    public GameObject[] powerBalls;
+
 
     // Start is called before the first frame update
     void Start()
@@ -58,74 +61,95 @@ public class Target : MonoBehaviour
         //fireRate = UpgradeMenu.fireSpeedValues[17];
         fireRate = 0.02f; // change firerate here
 
-        Debug.Log("selected ball is " + SceneTransition.currBall);
-        if (SceneTransition.currBall == "greyBall") {
-            bullet = ballsColours[0];
-        }
-        else if (SceneTransition.currBall == "redBall") {
-            bullet = ballsColours[1];
-        }
-        else if (SceneTransition.currBall == "purpleBall") {
-            bullet = ballsColours[2];
-        }
-        else if (SceneTransition.currBall == "yellowBall") {
-            bullet = ballsColours[3];
-        }
-        else if (SceneTransition.currBall == "blueBall") {
-            bullet = ballsColours[4];
-        }
-        else if (SceneTransition.currBall == "orangeBall") {
-            bullet = ballsColours[5];
-        }
-        else if (SceneTransition.currBall == "greenBall") {
-            bullet = ballsColours[6];
-        }
-        else if (SceneTransition.currBall == "cyanBall") {
-            bullet = ballsColours[7];
-        }
-        else if (SceneTransition.currBall == "pinkBall") {
-            bullet = ballsColours[8];
-        }
-        else if (SceneTransition.currBall == "whiteBall") {
-            bullet = ballsColours[9];
-        }
-        else if (SceneTransition.currBall == "greyDiamond") {
-            bullet = ballsColours[10];
-        }
-        else if (SceneTransition.currBall == "redDiamond") {
-            bullet = ballsColours[11];
-        }
-        else if (SceneTransition.currBall == "purpleDiamond") {
-            bullet = ballsColours[12];
-        }
-        else if (SceneTransition.currBall == "yellowDiamond") {
-            bullet = ballsColours[13];
-        }
-        else if (SceneTransition.currBall == "blueDiamond") {
-            bullet = ballsColours[14];
-        }
-        else if (SceneTransition.currBall == "orangeDiamond") {
-            bullet = ballsColours[15];
-        }
-        else if (SceneTransition.currBall == "greenDiamond") {
-            bullet = ballsColours[16];
-        }
-        else if (SceneTransition.currBall == "cyanDiamond") {
-            bullet = ballsColours[17];
-        }
-        else if (SceneTransition.currBall == "pinkDiamond") {
-            bullet = ballsColours[18];
-        }
-        else if (SceneTransition.currBall == "whiteDiamond") {
-            bullet = ballsColours[19];
-        }
-
 
     }
 
     void Awake() {
         //Debug.Log("selected ball is " + Themes.currSelectedBall.name);
         //ball = cyanBall;
+
+                Debug.Log("selected ball is " + SceneTransition.currBall);
+                if (SceneTransition.currBall == "greyBall") {
+                    bullet = ballsColours[0];
+                    powerBall = powerBalls[0];
+                }
+                else if (SceneTransition.currBall == "redBall") {
+                    bullet = ballsColours[1];
+                    powerBall = powerBalls[1];
+                }
+                else if (SceneTransition.currBall == "purpleBall") {
+                    bullet = ballsColours[2];
+                    powerBall = powerBalls[2];
+                }
+                else if (SceneTransition.currBall == "yellowBall") {
+                    bullet = ballsColours[3];
+                    powerBall = powerBalls[3];
+                }
+                else if (SceneTransition.currBall == "blueBall") {
+                    bullet = ballsColours[4];
+                    powerBall = powerBalls[4];
+                }
+                else if (SceneTransition.currBall == "orangeBall") {
+                    bullet = ballsColours[5];
+                    powerBall = powerBalls[5];
+                }
+                else if (SceneTransition.currBall == "greenBall") {
+                    bullet = ballsColours[6];
+                    powerBall = powerBalls[6];
+                }
+                else if (SceneTransition.currBall == "cyanBall") {
+                    bullet = ballsColours[7];
+                    powerBall = powerBalls[7];
+                }
+                else if (SceneTransition.currBall == "pinkBall") {
+                    bullet = ballsColours[8];
+                    powerBall = powerBalls[8];
+                }
+                else if (SceneTransition.currBall == "whiteBall") {
+                    bullet = ballsColours[9];
+                    powerBall = powerBalls[9];
+                }
+                else if (SceneTransition.currBall == "greyDiamond") {
+                    bullet = ballsColours[10];
+                    powerBall = powerBalls[10];
+                }
+                else if (SceneTransition.currBall == "redDiamond") {
+                    bullet = ballsColours[11];
+                    powerBall = powerBalls[11];
+                }
+                else if (SceneTransition.currBall == "purpleDiamond") {
+                    bullet = ballsColours[12];
+                    powerBall = powerBalls[12];
+                }
+                else if (SceneTransition.currBall == "yellowDiamond") {
+                    bullet = ballsColours[13];
+                    powerBall = powerBalls[13];
+                }
+                else if (SceneTransition.currBall == "blueDiamond") {
+                    bullet = ballsColours[14];
+                    powerBall = powerBalls[14];
+                }
+                else if (SceneTransition.currBall == "orangeDiamond") {
+                    bullet = ballsColours[15];
+                    powerBall = powerBalls[15];
+                }
+                else if (SceneTransition.currBall == "greenDiamond") {
+                    bullet = ballsColours[16];
+                    powerBall = powerBalls[16];
+                }
+                else if (SceneTransition.currBall == "cyanDiamond") {
+                    bullet = ballsColours[17];
+                    powerBall = powerBalls[17];
+                }
+                else if (SceneTransition.currBall == "pinkDiamond") {
+                    bullet = ballsColours[18];
+                    powerBall = powerBalls[18];
+                }
+                else if (SceneTransition.currBall == "whiteDiamond") {
+
+                    bullet = ballsColours[19];
+                    powerBall = powerBalls[19];
+                }
 
 
     }
@@ -281,7 +305,7 @@ public class Target : MonoBehaviour
          Debug.Log("entered");
          yield return new WaitForSeconds(10.0f);
          PlayerController.firePower = PlayerController.firePowerAlgorithm;
-         bullet = ball;
+         bullet = bulletPlaceHolder;
 
          // bug fix this
          running = false;
