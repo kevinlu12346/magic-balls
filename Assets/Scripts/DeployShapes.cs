@@ -37,11 +37,80 @@ public class DeployShapes : MonoBehaviour
     public static int spawnPositionForPowerUp;
     double[] positionsX = { -2.54, -2.08, -1.62, -1.16, -0.69, -0.23, 0.23, 0.69, 1.16, 1.62, 2.08, 2.54 };
 
-    double positionY = 1.29;
+    List<Color> colors = new List<Color>();
+    public GameObject[] explosions;
+    public GameObject[] largeExplosions;
+    List<GameObject> explosionList = new List<GameObject>();
+    List<GameObject> largeExplosionList = new List<GameObject>();
 
+    double positionY = 1.29;
+            void Awake() {
+                // set themes
+                if (SceneTransition.currTheme == "colorful") {
+                    colors.Add(new Color32(13,255,0,255)); // green
+                    colors.Add(new Color32(255,124,0,255)); // orange
+                    colors.Add(new Color32(0,215,255,255)); // cyan
+                    colors.Add(new Color32(255,0,230,255)); // pink
+                    colors.Add(new Color32(247,255,0,255)); // yellow
+                    explosionList.Add(explosions[0]);
+                    explosionList.Add(explosions[1]);
+                    explosionList.Add(explosions[2]);
+                    explosionList.Add(explosions[3]);
+                    explosionList.Add(explosions[4]);
+                    largeExplosionList.Add(largeExplosions[0]);
+                    largeExplosionList.Add(largeExplosions[1]);
+                    largeExplosionList.Add(largeExplosions[2]);
+                    largeExplosionList.Add(largeExplosions[3]);
+                    largeExplosionList.Add(largeExplosions[4]);
+                } else if (SceneTransition.currTheme == "white") {
+                    colors.Add(new Color32(255,255,255,255)); // white
+                    explosionList.Add(explosions[5]);
+                    largeExplosionList.Add(largeExplosions[5]);
+
+                } else if (SceneTransition.currTheme == "blue") {
+                    colors.Add(new Color32(0,0,255,255)); // blue original
+                    colors.Add(new Color32(0,63,255,255)); // blue
+                    colors.Add(new Color32(0,127,255,255)); // blue
+                    colors.Add(new Color32(0,189,255,255)); // blue
+                    colors.Add(new Color32(0,255,255,255)); // blue
+                    explosionList.Add(explosions[6]);
+                    explosionList.Add(explosions[7]);
+                    explosionList.Add(explosions[8]);
+                    explosionList.Add(explosions[9]);
+                    explosionList.Add(explosions[10]);
+                    largeExplosionList.Add(largeExplosions[6]);
+                    largeExplosionList.Add(largeExplosions[7]);
+                    largeExplosionList.Add(largeExplosions[8]);
+                    largeExplosionList.Add(largeExplosions[9]);
+                    largeExplosionList.Add(largeExplosions[10]);
+                } else if (SceneTransition.currTheme == "red") {
+                    colors.Add(new Color32(255,0,0,255)); // red original
+                    colors.Add(new Color32(255,0,63,255));
+                    colors.Add(new Color32(255,0,127,255));
+                    colors.Add(new Color32(255,0,189,255));
+                    colors.Add(new Color32(255,0,255,255));
+                    explosionList.Add(explosions[11]);
+                    explosionList.Add(explosions[12]);
+                    explosionList.Add(explosions[13]);
+                    explosionList.Add(explosions[14]);
+                    explosionList.Add(explosions[15]);
+                    largeExplosionList.Add(largeExplosions[11]);
+                    largeExplosionList.Add(largeExplosions[12]);
+                    largeExplosionList.Add(largeExplosions[13]);
+                    largeExplosionList.Add(largeExplosions[14]);
+                    largeExplosionList.Add(largeExplosions[15]);
+                }
+
+
+            }
+            int randomColor(int x, int y) {
+                int colorIndex = Random.Range(x,y);
+                return colorIndex;
+            }
              // Start is called before the first frame update
             void Start()
             {
+
                 nLine = 0;
                 running = true;
                 Circle.transform.Find("ball").GetComponent<SpriteRenderer>().color = Target.bullet.GetComponent<SpriteRenderer>().color;
@@ -59,6 +128,15 @@ public class DeployShapes : MonoBehaviour
                     GameObject a;
 
                     a = Instantiate(Square) as GameObject;
+                    Debug.Log(colors.Count);
+                    int randColor = randomColor(0, colors.Count);
+                    Debug.Log(randColor);
+
+                    // set color of shape
+                    a.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                    // set explosion of shape
+                    Debug.Log(explosionList.Count);
+                    a.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
 
                     a.transform.position = new Vector2((float)positionsX[i], height2);
                     a.GetComponent<Shape>().health = beginHealthRow1;
@@ -71,6 +149,10 @@ public class DeployShapes : MonoBehaviour
                 // row 1
                 for (int i = 0; i < 12; i++) {
                     GameObject a1 = Instantiate(Square) as GameObject;
+                    int randColor = randomColor(0, colors.Count);
+                    a1.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                    a1.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
+
                     a1.transform.position = new Vector2((float)positionsX[i], height1);
                     a1.GetComponent<Shape>().health = beginHealthRow1;
                     child = a1.transform.Find("ShapeText").gameObject;
@@ -105,6 +187,10 @@ public class DeployShapes : MonoBehaviour
                   int total = getLineTotal();
 
                   GameObject g = Instantiate(LargeSquare) as GameObject;
+                  int randColor = randomColor(0, colors.Count);
+                  g.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                  g.GetComponent<Shape>().largeExplosion = largeExplosions.ElementAt(randColor);
+
                   g.transform.position = new Vector2((float)positionsX[spawnPositionForBigShape], spawnHeight + 0.45f);
                   g.GetComponent<Shape>().health = total;
                   child = g.transform.Find("ShapeText").gameObject;
@@ -135,7 +221,7 @@ public class DeployShapes : MonoBehaviour
                        g.GetComponent<Shape>().health =(int)total / 4;
                        child = g.transform.Find("ShapeText").gameObject;
                        child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(((int)total/4))  );
-                   } else if (powerUpType >= 31 && powerUpType < 60) {
+                   } else if (powerUpType >= 30 && powerUpType < 60) {
                        GameObject g = Instantiate(powerBall) as GameObject;
                        g.transform.position = new Vector2((float)positionsX[spawnPositionForPowerUp], spawnHeight);
                        g.GetComponent<Shape>().health =(int)total / 4;
@@ -275,30 +361,45 @@ public class DeployShapes : MonoBehaviour
 
                 if (shapes[i] == 1) {
                   GameObject g2 = Instantiate(Square) as GameObject;
+                  int randColor = randomColor(0, colors.Count);
+                  g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                  g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
                   g2.transform.position = new Vector2((float)positionsX[i],spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
                   child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
                 } else if (shapes[i] == 2) {
                   GameObject g2 = Instantiate(Circle) as GameObject;
+                  int randColor = randomColor(0, colors.Count);
+                  g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                  g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
                   g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
                   child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
                 } else if (shapes[i] == 3) {
                   GameObject g2 = Instantiate(Diamond) as GameObject;
+                  int randColor = randomColor(0, colors.Count);
+                  g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                  g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
                   g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
                   child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
                 } else if (shapes[i] == 4) {
                   GameObject g2 = Instantiate(Pentagon) as GameObject;
+                  int randColor = randomColor(0, colors.Count);
+                  g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                  g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
                   g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
                   child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
                 } else if (shapes[i] == 5) {
                   GameObject g2 = Instantiate(Hexagon) as GameObject;
+                  int randColor = randomColor(0, colors.Count);
+                  g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                  g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
                   g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
@@ -307,6 +408,9 @@ public class DeployShapes : MonoBehaviour
                         int roll = Random.Range(0, 4);
                         if (roll == 0) {
                         GameObject g2 = Instantiate(Triangle1) as GameObject;
+                        int randColor = randomColor(0, colors.Count);
+                        g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                        g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
                         g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                         g2.GetComponent<Shape>().health = healths[z];
                         child = g2.transform.Find("ShapeText").gameObject;
@@ -314,6 +418,9 @@ public class DeployShapes : MonoBehaviour
 
                         } else if (roll == 1) {
                         GameObject g2 = Instantiate(Triangle2) as GameObject;
+                        int randColor = randomColor(0, colors.Count);
+                        g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                        g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
                         g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                         g2.GetComponent<Shape>().health = healths[z];
                         child = g2.transform.Find("ShapeText").gameObject;
@@ -321,6 +428,9 @@ public class DeployShapes : MonoBehaviour
 
                         } else if (roll == 2) {
                         GameObject g2 = Instantiate(Triangle3) as GameObject;
+                        int randColor = randomColor(0, colors.Count);
+                        g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                        g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
                         g2.transform.position = new Vector2((float)positionsX[i],spawnHeight);
                         g2.GetComponent<Shape>().health = healths[z];
                         child = g2.transform.Find("ShapeText").gameObject;
@@ -328,6 +438,9 @@ public class DeployShapes : MonoBehaviour
 
                         } else if (roll == 3) {
                         GameObject g2 = Instantiate(Triangle4) as GameObject;
+                        int randColor = randomColor(0, colors.Count);
+                        g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                        g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
                         g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                         g2.GetComponent<Shape>().health = healths[z];
                         child = g2.transform.Find("ShapeText").gameObject;
@@ -336,6 +449,9 @@ public class DeployShapes : MonoBehaviour
                         }
                 } else if (shapes[i] == 7) {
                     GameObject g2 = Instantiate(SquareMoney) as GameObject;
+                    int randColor = randomColor(0, colors.Count);
+                    g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                    g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
                     g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                     g2.GetComponent<Shape>().health = healths[z];
                     child = g2.transform.Find("ShapeText").gameObject;
@@ -356,6 +472,9 @@ public class DeployShapes : MonoBehaviour
 
                 if (shapes[i] == 1) {
                   GameObject g2 = Instantiate(Square) as GameObject;
+                  int randColor = randomColor(0, colors.Count);
+                  g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                  g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
                   g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
@@ -363,24 +482,36 @@ public class DeployShapes : MonoBehaviour
 
                 } else if (shapes[i] == 2) {
                   GameObject g2 = Instantiate(Circle) as GameObject;
+                  int randColor = randomColor(0, colors.Count);
+                  g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                  g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
                   g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
                   child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
                 } else if (shapes[i] == 3) {
                   GameObject g2 = Instantiate(Diamond) as GameObject;
+                  int randColor = randomColor(0, colors.Count);
+                  g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                  g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
                   g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
                   child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
                 } else if (shapes[i] == 4) {
                   GameObject g2 = Instantiate(Pentagon) as GameObject;
+                  int randColor = randomColor(0, colors.Count);
+                  g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                  g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
                   g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
                   child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
                 } else if (shapes[i] == 5) {
                   GameObject g2 = Instantiate(Hexagon) as GameObject;
+                  int randColor = randomColor(0, colors.Count);
+                  g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                  g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
                   g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
@@ -389,6 +520,9 @@ public class DeployShapes : MonoBehaviour
                         int roll = Random.Range(0, 4);
                         if (roll == 0) {
                         GameObject g2 = Instantiate(Triangle1) as GameObject;
+                        int randColor = randomColor(0, colors.Count);
+                        g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                        g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
                         g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                         g2.GetComponent<Shape>().health = healths[z];
                         child = g2.transform.Find("ShapeText").gameObject;
@@ -396,6 +530,9 @@ public class DeployShapes : MonoBehaviour
 
                         } else if (roll == 1) {
                         GameObject g2 = Instantiate(Triangle2) as GameObject;
+                        int randColor = randomColor(0, colors.Count);
+                        g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                        g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
                         g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                         g2.GetComponent<Shape>().health = healths[z];
                         child = g2.transform.Find("ShapeText").gameObject;
@@ -403,6 +540,9 @@ public class DeployShapes : MonoBehaviour
 
                         } else if (roll == 2) {
                         GameObject g2 = Instantiate(Triangle3) as GameObject;
+                        int randColor = randomColor(0, colors.Count);
+                        g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                        g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
                         g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                         g2.GetComponent<Shape>().health = healths[z];
                         child = g2.transform.Find("ShapeText").gameObject;
@@ -410,6 +550,9 @@ public class DeployShapes : MonoBehaviour
 
                         } else if (roll == 3) {
                         GameObject g2 = Instantiate(Triangle4) as GameObject;
+                        int randColor = randomColor(0, colors.Count);
+                        g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                        g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
                         g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                         g2.GetComponent<Shape>().health = healths[z];
                         child = g2.transform.Find("ShapeText").gameObject;
@@ -433,30 +576,46 @@ public class DeployShapes : MonoBehaviour
 
                 if (shapes[i] == 1) {
                   GameObject g2 = Instantiate(Square) as GameObject;
+                  int randColor = randomColor(0, colors.Count);
+                  g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                  g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
                   g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
                   child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
                 } else if (shapes[i] == 2) {
                   GameObject g2 = Instantiate(Circle) as GameObject;
+                  int randColor = randomColor(0, colors.Count);
+                  g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                  g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
                   g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
                   child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
                 } else if (shapes[i] == 3) {
                   GameObject g2 = Instantiate(Diamond) as GameObject;
+                  int randColor = randomColor(0, colors.Count);
+                  g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                  g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
                   g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
                   child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
                 } else if (shapes[i] == 4) {
                   GameObject g2 = Instantiate(Pentagon) as GameObject;
+                  int randColor = randomColor(0, colors.Count);
+                  g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                  g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
                   g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
                   child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
                 } else if (shapes[i] == 5) {
                   GameObject g2 = Instantiate(Hexagon) as GameObject;
+                  int randColor = randomColor(0, colors.Count);
+                  g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                  g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
+
                   g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                   g2.GetComponent<Shape>().health = healths[z];
                   child = g2.transform.Find("ShapeText").gameObject;
@@ -465,6 +624,9 @@ public class DeployShapes : MonoBehaviour
                         int roll = Random.Range(0, 4);
                         if (roll == 0) {
                         GameObject g2 = Instantiate(Triangle1) as GameObject;
+                        int randColor = randomColor(0, colors.Count);
+                        g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                        g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
                         g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                         g2.GetComponent<Shape>().health = healths[z];
                         child = g2.transform.Find("ShapeText").gameObject;
@@ -472,6 +634,9 @@ public class DeployShapes : MonoBehaviour
 
                         } else if (roll == 1) {
                         GameObject g2 = Instantiate(Triangle2) as GameObject;
+                        int randColor = randomColor(0, colors.Count);
+                        g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                        g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
                         g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                         g2.GetComponent<Shape>().health = healths[z];
                         child = g2.transform.Find("ShapeText").gameObject;
@@ -479,6 +644,9 @@ public class DeployShapes : MonoBehaviour
 
                         } else if (roll == 2) {
                         GameObject g2 = Instantiate(Triangle3) as GameObject;
+                        int randColor = randomColor(0, colors.Count);
+                        g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                        g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
                         g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                         g2.GetComponent<Shape>().health = healths[z];
                         child = g2.transform.Find("ShapeText").gameObject;
@@ -486,6 +654,9 @@ public class DeployShapes : MonoBehaviour
 
                         } else if (roll == 3) {
                         GameObject g2 = Instantiate(Triangle4) as GameObject;
+                        int randColor = randomColor(0, colors.Count);
+                        g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                        g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
                         g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
                         g2.GetComponent<Shape>().health = healths[z];
                         child = g2.transform.Find("ShapeText").gameObject;
@@ -500,7 +671,7 @@ public class DeployShapes : MonoBehaviour
             // get line total
             int getLineTotal() {
                 int total = (int)PlayerController.firePowerAlgorithm * (int)PlayerController.numberBalls;
-                return total   * 2 *3;
+                return  total   * 2 *3;
             }
             // returns array of size x that sum to total
             int[] generateXNumbersSumToTotal(int x, int total) {

@@ -12,7 +12,6 @@ public class GameState : MonoBehaviour
 
     // Update is called once per frame
     IEnumerator scene2() {
-        Debug.Log("entered");
         yield return new WaitForSeconds(10.0f);
         SceneManager.LoadScene(1);
     }

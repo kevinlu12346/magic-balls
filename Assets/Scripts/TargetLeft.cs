@@ -7,7 +7,7 @@ public class TargetLeft : MonoBehaviour
     public static GameObject bullet;
     public GameObject ball;
     public GameObject fireBall;
-    public float fireRate;
+    private float fireRate;
     private float nextFire;
     public LineRenderer lineRenderer;
     public GameObject player;
@@ -23,6 +23,9 @@ public class TargetLeft : MonoBehaviour
     void Start()
     {
         isPower = false;
+        fireRate = UpgradeMenu.fireSpeedValues[UpgradeMenu.fireSpeedLevel - 1];
+        bullet = Target.bullet;
+        powerBall = Target.powerBall;
     }
 
     void Awake() {
@@ -120,8 +123,9 @@ public class TargetLeft : MonoBehaviour
         float x = 0.5f * Mathf.Cos(radian);
         float y = 0.5f * Mathf.Sin(radian);
         Vector3 temp = new Vector3(x ,y ,0);
-        b.transform.position += temp;
-
+        //b.transform.position += temp;
+        Vector3 pushBack = new Vector3(0,0, 0.02f);
+        b.transform.position += pushBack;
         // give bullet starting rotation
         //b.transform.rotation =  Quaternion.Euler(0.0f, 0.0f, rotationZ); // rotates circle but no matter how u rotate circle it will always be a circle
         // give bullet velocity (Direction and speed)
@@ -140,10 +144,11 @@ public class TargetLeft : MonoBehaviour
      }
 
      IEnumerator powerBallDeactivate() {
-         Debug.Log("entered");
          yield return new WaitForSeconds(10.0f);
          PlayerController.firePower = PlayerController.firePowerAlgorithm;
-         bullet = ball;
+         bullet = Target.bulletPlaceHolder;
+
+         // bug fix this
          running = false;
      }
 }

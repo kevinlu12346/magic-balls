@@ -6,14 +6,13 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
 
-
     private GameObject child;
     private GameObject childMoney;
 
     public static int score;
     public static bool deactivateSpeed = false;
     public static int highScore = 10000020;
-    public static int money = 99999997;
+    public static int money = 99999;
 
 
     public GameObject canvas;
@@ -89,7 +88,7 @@ public class GameManager : MonoBehaviour
 
 
     IEnumerator speedDeactivate() {
-        yield return new WaitForSeconds(10.0f);
+        yield return new WaitForSeconds(13.0f);
         Debug.Log("Slowed");
         BallMovement.multiplier = 1f;
     }
@@ -100,15 +99,6 @@ public class GameManager : MonoBehaviour
          DeployShapes.running = true;
 
      }
-
-    public void  confirmGameOver() {
-        // activated when
-        // reset game variables
-    }
-    public void startGame() {
-        // activated when you touch the screen
-
-    }
 
 
 }

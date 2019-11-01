@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 1033701248813234422, guid: 7e44452ebff02f2459b8e119415843c7,
         type: 3}
       propertyPath: m_Name
-      value: powerBall
+      value: powerBall Variant 6
       objectReference: {fileID: 0}
     - target: {fileID: 8138877212507229864, guid: 7e44452ebff02f2459b8e119415843c7,
         type: 3}
@@ -117,6 +117,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8138877212507229864, guid: 7e44452ebff02f2459b8e119415843c7,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138877212507229864, guid: 7e44452ebff02f2459b8e119415843c7,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.26
+      objectReference: {fileID: 0}
     - target: {fileID: 1033701248813234423, guid: 7e44452ebff02f2459b8e119415843c7,
         type: 3}
       propertyPath: m_Color.r
@@ -161,6 +171,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Parameters.colorGradient.key1.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7936762887223904549, guid: 7e44452ebff02f2459b8e119415843c7,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.19836071
+      objectReference: {fileID: 0}
+    - target: {fileID: 7936762887223904549, guid: 7e44452ebff02f2459b8e119415843c7,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
+      value: 0.154
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e44452ebff02f2459b8e119415843c7, type: 3}

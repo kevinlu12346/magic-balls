@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 6756249740383494894, guid: e26e5d53eb5d00249886e30a79c7ad2a,
         type: 3}
       propertyPath: m_Name
-      value: cyanBall
+      value: cyanBall Variant 1
       objectReference: {fileID: 0}
     - target: {fileID: 2551409227402974384, guid: e26e5d53eb5d00249886e30a79c7ad2a,
         type: 3}

@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 1360191713883651284, guid: 70127df19fd845945a7ae48cff423fab,
         type: 3}
       propertyPath: m_Name
-      value: leftBall
+      value: leftBall Variant 2
       objectReference: {fileID: 0}
     - target: {fileID: 7803391609593580170, guid: 70127df19fd845945a7ae48cff423fab,
         type: 3}
@@ -131,6 +131,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4530640940059444571, guid: 70127df19fd845945a7ae48cff423fab,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8258798165401603335, guid: 70127df19fd845945a7ae48cff423fab,
         type: 3}

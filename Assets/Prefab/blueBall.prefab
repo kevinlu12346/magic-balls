@@ -130,7 +130,12 @@ PrefabInstance:
     - target: {fileID: 1758405288901971441, guid: 3a8b8352da906e2408e220f5730af778,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.008023262
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758405288901971441, guid: 3a8b8352da906e2408e220f5730af778,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8654342126323399715, guid: 3a8b8352da906e2408e220f5730af778,
         type: 3}
@@ -162,5 +167,10 @@ PrefabInstance:
       propertyPath: m_Parameters.colorGradient.key1.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6236787323868733326, guid: 3a8b8352da906e2408e220f5730af778,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f66c744a87f0f064a86a892774bcd204, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a8b8352da906e2408e220f5730af778, type: 3}

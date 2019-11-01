@@ -31,16 +31,25 @@ public class ReviveScreen : MonoBehaviour
     }
     public void revive() {
         Time.timeScale = 1f;
-        string[] tagsToDisable =  {"shape", "circle", "money", "freeze", "powerball", "speed"};
+        string[] tagsToDisable =  {"shape", "circle", "money", "freeze", "powerball", "speed", "Large"};
         foreach(string s in tagsToDisable) {
             myObjects = GameObject.FindGameObjectsWithTag(s);
                 foreach(GameObject obj in myObjects) {
                     if (obj.transform.position.y <= 4) {
-                        GameObject boom = Instantiate(explosion);
-                        float x = obj.transform.position.x;
-                        float y = obj.transform.position.y;
-                        boom.transform.position = new Vector3(x, y, -5.39f);
+                        if (obj.tag == "Large") {
+                            GameObject boom = Instantiate(obj.GetComponent<Shape>().largeExplosion);
+                            float x = obj.transform.position.x;
+                            float y = obj.transform.position.y;
+                            boom.transform.position = new Vector3(x, y, -5.39f);
+                        } else if (obj.tag == "shape" || obj.tag == "circle" || obj.tag == "money"){
+                            GameObject boom = Instantiate(obj.GetComponent<Shape>().explosion);
+                            float x = obj.transform.position.x;
+                            float y = obj.transform.position.y;
+                            boom.transform.position = new Vector3(x, y, -5.39f);
+                        }
+
                         Destroy(obj);
+
                     }
                 }
         }

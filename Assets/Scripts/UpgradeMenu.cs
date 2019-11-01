@@ -5,6 +5,7 @@ using TMPro;
 
 public class UpgradeMenu : MonoBehaviour
 {
+    // at start of program set these variables are set (i.e. start of game)
     public static int numberBallsCost = 10;
     public static int fireSpeedCost = 20;
     public static int firePowerCost = 30;
@@ -15,9 +16,9 @@ public class UpgradeMenu : MonoBehaviour
 
 
     public static int leftFireBallCost = 20;
-    public static int leftNumberBallsLevel = 1;
+    public static int leftNumberBallsLevel = 0;
     public static int rightFireBallCost = 20;
-    public static int rightNumberBallsLevel = 1;
+    public static int rightNumberBallsLevel = 0;
 
     public static int largeFireBallCost = 30;
     public static int chainLightningCost = 30;
@@ -27,49 +28,51 @@ public class UpgradeMenu : MonoBehaviour
     public GameObject game;
     public GameObject fadecanvas;
 
-    // Start is called before the first frame update
+    // Start is called everytime the scene is loaded so variables are set on load
     void Start()
     {
         child = transform.Find("Image").Find("scrollCanvas").Find("shooterStats").Find("numberBalls").Find("level").Find("levelText").gameObject;
-        child.GetComponent<TextMeshProUGUI>().SetText(5.ToString());
+        child.GetComponent<TextMeshProUGUI>().SetText(numberBallsLevel.ToString());
 
 
         child = transform.Find("Image").Find("scrollCanvas").Find("shooterStats").Find("firePower").Find("level").Find("levelText").gameObject;
-        child.GetComponent<TextMeshProUGUI>().SetText(1.ToString());
+        child.GetComponent<TextMeshProUGUI>().SetText(firePowerLevel.ToString());
 
         child = transform.Find("Image").Find("scrollCanvas").Find("shooterStats").Find("fireSpeed").Find("level").Find("levelText").gameObject;
-        child.GetComponent<TextMeshProUGUI>().SetText(1.ToString());
+        child.GetComponent<TextMeshProUGUI>().SetText(fireSpeedLevel.ToString());
 
 
         child = transform.Find("Image").Find("scrollCanvas").Find("shooterStats").Find("fireSpeed").Find("costButton").Find("moneyScore").gameObject;
-        child.GetComponent<TextMeshPro>().SetText(20.ToString());
+        child.GetComponent<TextMeshPro>().SetText(fireSpeedCost.ToString());
         child = transform.Find("Image").Find("scrollCanvas").Find("shooterStats").Find("numberBalls").Find("costButton").Find("moneyScore").gameObject;
-        child.GetComponent<TextMeshPro>().SetText(10.ToString());
+        child.GetComponent<TextMeshPro>().SetText(numberBallsCost.ToString());
         child = transform.Find("Image").Find("scrollCanvas").Find("shooterStats").Find("firePower").Find("costButton").Find("moneyScore").gameObject;
-        child.GetComponent<TextMeshPro>().SetText(30.ToString());
+        child.GetComponent<TextMeshPro>().SetText(firePowerCost.ToString());
 // skills
 
         child = transform.Find("Image").Find("scrollCanvas").Find("skillsPanel").Find("leftFireBall").Find("level").Find("levelText").gameObject;
-        child.GetComponent<TextMeshProUGUI>().SetText(1.ToString());
+        child.GetComponent<TextMeshProUGUI>().SetText(leftNumberBallsLevel.ToString());
 
         child = transform.Find("Image").Find("scrollCanvas").Find("skillsPanel").Find("rightFireBall").Find("level").Find("levelText").gameObject;
-        child.GetComponent<TextMeshProUGUI>().SetText(1.ToString());
+        child.GetComponent<TextMeshProUGUI>().SetText(rightNumberBallsLevel.ToString());
 
+/*
         child = transform.Find("Image").Find("scrollCanvas").Find("skillsPanel").Find("largeFireBall").Find("level").Find("levelText").gameObject;
         child.GetComponent<TextMeshProUGUI>().SetText(1.ToString());
 
         child = transform.Find("Image").Find("scrollCanvas").Find("skillsPanel").Find("chainLightning").Find("level").Find("levelText").gameObject;
         child.GetComponent<TextMeshProUGUI>().SetText(1.ToString());
-
+*/
         child = transform.Find("Image").Find("scrollCanvas").Find("skillsPanel").Find("leftFireBall").Find("costButton").Find("moneyScore").gameObject;
-        child.GetComponent<TextMeshPro>().SetText(20.ToString());
+        child.GetComponent<TextMeshPro>().SetText(leftFireBallCost.ToString());
         child = transform.Find("Image").Find("scrollCanvas").Find("skillsPanel").Find("rightFireBall").Find("costButton").Find("moneyScore").gameObject;
-        child.GetComponent<TextMeshPro>().SetText(20.ToString());
+        child.GetComponent<TextMeshPro>().SetText(rightFireBallCost.ToString());
+/*
         child = transform.Find("Image").Find("scrollCanvas").Find("skillsPanel").Find("largeFireBall").Find("costButton").Find("moneyScore").gameObject;
         child.GetComponent<TextMeshPro>().SetText(30.ToString());
         child = transform.Find("Image").Find("scrollCanvas").Find("skillsPanel").Find("chainLightning").Find("costButton").Find("moneyScore").gameObject;
         child.GetComponent<TextMeshPro>().SetText(50.ToString());
-
+*/
         child = game.transform.Find("moneyScore").gameObject;
         child.GetComponent<TextMeshPro>().text = GameManager.money.ToString();
 

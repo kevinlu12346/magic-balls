@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class StartMenu : MonoBehaviour
 {
+    public Button button;
+    public Button unmuteButton;
+    public GameObject[] balls;
 
     public GameObject game;
     private GameObject child;
@@ -12,6 +16,13 @@ public class StartMenu : MonoBehaviour
     public GameObject canvas;
     void Start()
     {
+        if (SceneTransition.muted == true) {
+            button.GetComponent<Image>().enabled = false;
+            unmuteButton.GetComponent<Image>().enabled = true;
+        } else {
+            unmuteButton.GetComponent<Image>().enabled = false;
+            button.GetComponent<Image>().enabled = true;
+        }
 
         child = game.transform.Find("highscore").gameObject;
         child.GetComponent<TextMeshProUGUI>().SetText(GameManager.highScore.ToString());
@@ -41,6 +52,19 @@ public class StartMenu : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         child = canvas.transform.Find("panelFadeTransition").gameObject;
         child.SetActive(false);
+
+    }
+    public void mute() {
+        SceneTransition.muted = true;
+        // switch buttons
+        button.GetComponent<Image>().enabled = false;
+        unmuteButton.GetComponent<Image>().enabled = true;
+
+    }
+    public void unmute() {
+        SceneTransition.muted = false;
+        unmuteButton.GetComponent<Image>().enabled = false;
+        button.GetComponent<Image>().enabled = true;
 
     }
 }

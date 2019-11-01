@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 6599420994208678925, guid: b633effbd3338b541a066233616ea248,
         type: 3}
       propertyPath: m_Name
-      value: powerBall
+      value: powerBall Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2683778238914785875, guid: b633effbd3338b541a066233616ea248,
         type: 3}

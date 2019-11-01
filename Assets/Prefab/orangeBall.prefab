@@ -12,21 +12,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: orangeBall
       objectReference: {fileID: 0}
-    - target: {fileID: 6885461217155497321, guid: 4d08ae5b2559c4a4a87689dca1c8c319,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6885461217155497321, guid: 4d08ae5b2559c4a4a87689dca1c8c319,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.48571664
-      objectReference: {fileID: 0}
-    - target: {fileID: 6885461217155497321, guid: 4d08ae5b2559c4a4a87689dca1c8c319,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2388449335292988214, guid: 4d08ae5b2559c4a4a87689dca1c8c319,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -132,6 +117,21 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: -0.14537235
       objectReference: {fileID: 0}
+    - target: {fileID: 6885461217155497321, guid: 4d08ae5b2559c4a4a87689dca1c8c319,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885461217155497321, guid: 4d08ae5b2559c4a4a87689dca1c8c319,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.48571664
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885461217155497321, guid: 4d08ae5b2559c4a4a87689dca1c8c319,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4608141723893746875, guid: 4d08ae5b2559c4a4a87689dca1c8c319,
         type: 3}
       propertyPath: m_Parameters.colorGradient.key0.r
@@ -161,6 +161,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Parameters.colorGradient.key1.b
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253279646430621462, guid: 4d08ae5b2559c4a4a87689dca1c8c319,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.307
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d08ae5b2559c4a4a87689dca1c8c319, type: 3}

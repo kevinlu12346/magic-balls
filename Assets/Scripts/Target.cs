@@ -11,7 +11,7 @@ public class Target : MonoBehaviour
     public static GameObject powerBall;
     private GameObject ball;
     public GameObject fireBall;
-    public static float fireRate = UpgradeMenu.fireSpeedValues[0];
+    private float fireRate = UpgradeMenu.fireSpeedValues[0];
     private float nextFire;
     public LineRenderer lineRenderer;
     public GameObject player;
@@ -34,6 +34,7 @@ public class Target : MonoBehaviour
     public Material[] material;
     TrailRenderer myTrailRenderer;
 
+    public static AudioSource audioSource;
 
 
     public GameObject[] ballsColours;
@@ -57,10 +58,23 @@ public class Target : MonoBehaviour
         PlayerController.leftNumberBalls = PlayerController.leftBallsAlgorithm;
 
 
-        //fireRate = UpgradeMenu.fireSpeedValues[UpgradeMenu.fireSpeedLevel - 1];
+        fireRate = UpgradeMenu.fireSpeedValues[UpgradeMenu.fireSpeedLevel - 1];
         //fireRate = UpgradeMenu.fireSpeedValues[17];
-        fireRate = 0.02f; // change firerate here
+        //fireRate = 0.02f; // change firerate here
 
+        audioSource = GetComponent<AudioSource>();
+        // to play game with sound or not
+        if (SceneTransition.muted == true) {
+            //bullet.transform.GetComponent<AudioSource>().enabled = false;
+            //transform.GetComponent<AudioSource>().enabled = false;
+            AudioListener.pause = true;
+
+        } else {
+            //bullet.transform.GetComponent<AudioSource>().enabled = true;
+            //transform.GetComponent<AudioSource>().enabled = true;
+            AudioListener.pause = false;
+
+        }
 
     }
 
@@ -156,7 +170,7 @@ public class Target : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //Debug.Log(PlayerController.balls + "xx" + PlayerController.leftBalls + "xx" + PlayerController.rightBalls);
         if (warning && ranWarningFunction == false) {
             ranWarningFunction = true;
             StartCoroutine(ranWarningFunctionFalse());
@@ -280,6 +294,9 @@ public class Target : MonoBehaviour
         float y = 0.5f * Mathf.Sin(radian);
         Vector3 temp = new Vector3(x ,y ,0);
         //b.transform.position += temp;
+
+        Vector3 pushBack = new Vector3(0,0, 0.02f);
+        b.transform.position += pushBack;
 
         // give bullet starting rotation
         b.transform.rotation =  Quaternion.Euler(0.0f, 0.0f, rotationZ); // rotates circle but no matter how u rotate circle it will always be a circle

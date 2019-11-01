@@ -16,10 +16,11 @@ public class Shape : MonoBehaviour
     float moveSpeed = 0.2f;
     private bool danger = false;
     public GameObject explosion;
+    public GameObject largeExplosion;
     Animator anim;
     Animator onHitAnim;
     public GameObject onHit;
-
+    //private Shake shake;
     public GameObject circle;
 
     PolygonCollider2D collider;
@@ -28,6 +29,9 @@ public class Shape : MonoBehaviour
     public bool waiting = true;
 
     public GameObject[] myObjects;
+
+
+    public Color color;
     void Start()
     {
         child = transform.Find("ShapeText").gameObject;
@@ -39,6 +43,7 @@ public class Shape : MonoBehaviour
         collider = gameObject.GetComponent<PolygonCollider2D>();
         renderer = gameObject.GetComponent<SpriteRenderer>();
         circleCollider = gameObject.GetComponent<CircleCollider2D>();
+        //shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<Shake>();
     }
 
     void Update()
@@ -88,7 +93,6 @@ public class Shape : MonoBehaviour
                 onHit = transform.Find("onHitAnimation").gameObject;
                 onHitAnim = onHit.GetComponent<Animator>();
                 if (waiting == true) {
-                    Debug.Log("entered");
                     onHitAnim.enabled = true;
                     waiting = false;
                     StartCoroutine(deactivateAfter(0.35f));
@@ -123,9 +127,13 @@ public class Shape : MonoBehaviour
             } else if(gameObject.tag == "powerball") {
                 GameObject boom = Instantiate(explosion);
                 boom.transform.position = new Vector3(transform.position.x, transform.position.y, -5.39f);
-                Target.isPower = true;
+                //Target.isPower = true;
                 Target.bulletPlaceHolder = Target.bullet;
                 Target.bullet = Target.powerBall;
+
+                TargetLeft.bullet = Target.powerBall;
+
+                TargetRight.bullet = Target.powerBall;
                 //StartCoroutine(Target.powerBallDeactivate());
                 Destroy(gameObject);
             } else if (gameObject.tag == "freeze") {
@@ -149,16 +157,45 @@ public class Shape : MonoBehaviour
                 GameManager.deactivateSpeed = true;
                 Destroy(gameObject);
             } else if (gameObject.tag == "money") {
+                if (SceneTransition.muted == false) {
+                    Target.audioSource.Play();
+                }
                 GameObject boom = Instantiate(explosion);
                 boom.transform.position = new Vector3(transform.position.x, transform.position.y, -5.39f);
-                if (GameManager.money < 999) {
                     GameManager.money++;
-                }
+
                 anim.enabled = true;
                 collider.enabled = false;
                 child = transform.Find("ShapeText").gameObject;
                 child.GetComponent<TextMeshPro>().enabled = false;
                 StartCoroutine(destroyAfter(0.95f));
+            }
+            /*else if (gameObject.tag == "Large") {
+                shake.camShake();
+                Debug.Log("shakeeeeeeeeeeeeeeeeee");
+                anim.enabled = true;
+               // deactivateAfter(1f);
+
+                collider.enabled = false;
+                child = transform.Find("ShapeText").gameObject;
+                child.GetComponent<TextMeshPro>().enabled = false;
+
+                GameObject boom = Instantiate(explosion);
+                boom.transform.position = new Vector3(transform.position.x, transform.position.y, -5.39f);
+                //Destroy(gameObject);
+                StartCoroutine(destroyAfter(0.95f));
+            }
+            */
+            else if (gameObject.tag == "Large") {
+                anim.enabled = true;
+                collider.enabled = false;
+                child = transform.Find("ShapeText").gameObject;
+                child.GetComponent<TextMeshPro>().enabled = false;
+
+                GameObject boom = Instantiate(largeExplosion);
+                boom.transform.position = new Vector3(transform.position.x, transform.position.y, -5.39f);
+                //Destroy(gameObject);
+                StartCoroutine(destroyAfter(0.95f * 2));
             }
              else {
                  anim.enabled = true;

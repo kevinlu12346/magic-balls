@@ -18,17 +18,17 @@ using UnityEngine.EventSystems;
     private GameObject child;
     public static bool gameOver = false;
 
-    public Animator transitionAnim;
     public static string currBall = "greyBall";
+    public static string currTheme = "red";
+    public static bool muted = false;
+    public void LoadCredits() {
+        SceneManager.LoadScene(4);
 
+    }
     public void LoadThemePage () {
         SceneManager.LoadScene(3);
     }
-    IEnumerator LoadSceneAnim () {
-    //    transitionAnim.setTrigger("end");
-        yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadScene(1);
-    }
+
     public void loadGame() {
         if (GameManager.score > GameManager.highScore) {
             GameManager.highScore = GameManager.score;
@@ -48,7 +48,7 @@ using UnityEngine.EventSystems;
     }
     void Update()
     {
-        Debug.Log("ball is " + currBall);
+        //Debug.Log("ball is " + currBall);
         /*
         Scene scene = SceneManager.GetActiveScene();
         if (Input.GetMouseButtonDown(0)  && scene.buildIndex == 0) {

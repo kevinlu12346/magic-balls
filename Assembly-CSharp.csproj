@@ -56,6 +56,7 @@
      <Compile Include="Assets\Auto Letterbox\ForceCameraRatio.cs" />
      <Compile Include="Assets\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\BallMovement.cs" />
+     <Compile Include="Assets\Scripts\Credits.cs" />
      <Compile Include="Assets\Scripts\DeployShapes.cs" />
      <Compile Include="Assets\Scripts\explode.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
@@ -68,6 +69,7 @@
      <Compile Include="Assets\Scripts\ReviveScreen.cs" />
      <Compile Include="Assets\Scripts\rightBallMovement.cs" />
      <Compile Include="Assets\Scripts\SceneTransition.cs" />
+     <Compile Include="Assets\Scripts\Shake.cs" />
      <Compile Include="Assets\Scripts\Shape.cs" />
      <Compile Include="Assets\Scripts\StartMenu.cs" />
      <Compile Include="Assets\Scripts\Target.cs" />
@@ -79,11 +81,13 @@
      <None Include="Assets\craftpix-556112-free-crystals-2d-game-items\TXT\readme.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+     <None Include="Assets\my-icons-collection (2)\my-icons-collection (11)\backup.txt" />
      <None Include="Assets\my-icons-collection (2)\backup.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
      <None Include="Assets\craftpix-513237-free-game-coins-sprite-sheets\License.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
      <None Include="Assets\craftpix-443360-gems-gui\gems_gui\License.txt" />
+     <None Include="Assets\my-icons-collection (2)\my-icons-collection (12)\backup.txt" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
      <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
@@ -102,9 +106,12 @@
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
      <None Include="Assets\my-icons-collection (8)\backup.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+     <None Include="Assets\my-icons-collection (9)\my-icons-collection (13)\backup.txt" />
+     <None Include="Assets\my-icons-collection (9)\my-icons-collection (14)\backup.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
      <None Include="Assets\my-icons-collection (9)\backup.txt" />
      <None Include="Assets\craftpix-443360-gems-gui\gems_gui\readme.txt" />
+     <None Include="Assets\my-icons-collection (2)\my-icons-collection (10)\backup.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/kevin/unityProjects/Magic Balls/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
