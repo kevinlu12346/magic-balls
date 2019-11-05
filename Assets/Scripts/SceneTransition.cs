@@ -19,7 +19,7 @@ using UnityEngine.EventSystems;
     public static bool gameOver = false;
 
     public static string currBall = "greyBall";
-    public static string currTheme = "red";
+    public static string currTheme = "colorful";
     public static bool muted = false;
     public void LoadCredits() {
         SceneManager.LoadScene(4);

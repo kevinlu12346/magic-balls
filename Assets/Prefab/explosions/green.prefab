@@ -25,7 +25,7 @@ PrefabInstance:
     - target: {fileID: 5273813507988159666, guid: c0c5df2ab17efd140a0a37fd9bfb4ef6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.39
+      value: -13
       objectReference: {fileID: 0}
     - target: {fileID: 5273813507988159666, guid: c0c5df2ab17efd140a0a37fd9bfb4ef6,
         type: 3}
@@ -131,6 +131,11 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054092338746100882, guid: c0c5df2ab17efd140a0a37fd9bfb4ef6,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0c5df2ab17efd140a0a37fd9bfb4ef6, type: 3}

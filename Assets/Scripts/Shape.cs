@@ -90,8 +90,9 @@ public class Shape : MonoBehaviour
 
             int damageScore = 0;
             if (health > 0) {
-                onHit = transform.Find("onHitAnimation").gameObject;
-                onHitAnim = onHit.GetComponent<Animator>();
+                    onHit = transform.Find("onHitAnimation").gameObject;
+                    onHitAnim = onHit.GetComponent<Animator>();
+
                 if (waiting == true) {
                     onHitAnim.enabled = true;
                     waiting = false;
@@ -125,6 +126,7 @@ public class Shape : MonoBehaviour
                 // add player total ball count
                 PlayerController.numberBalls++;
             } else if(gameObject.tag == "powerball") {
+
                 GameObject boom = Instantiate(explosion);
                 boom.transform.position = new Vector3(transform.position.x, transform.position.y, -5.39f);
                 //Target.isPower = true;
@@ -134,6 +136,8 @@ public class Shape : MonoBehaviour
                 TargetLeft.bullet = Target.powerBall;
 
                 TargetRight.bullet = Target.powerBall;
+                PlayerController.firePower = PlayerController.firePowerAlgorithm * 2;
+
                 //StartCoroutine(Target.powerBallDeactivate());
                 Destroy(gameObject);
             } else if (gameObject.tag == "freeze") {

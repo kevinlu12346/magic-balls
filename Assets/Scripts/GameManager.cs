@@ -43,6 +43,12 @@ public class GameManager : MonoBehaviour
             child = canvas.transform.Find("score").gameObject;
             child.GetComponent<TextMeshPro>().text = GameManager.score.ToString();
 
+        // updapte ballCount
+
+        child = canvas.transform.Find("ballCount").gameObject;
+        child.GetComponent<TextMeshProUGUI>().text = "x"+ (PlayerController.numberBalls + PlayerController.leftNumberBalls + PlayerController.rightNumberBalls).ToString();
+
+
 
         if (Shape.moveDown == false) {
             StartCoroutine(moveDownDeactivate());

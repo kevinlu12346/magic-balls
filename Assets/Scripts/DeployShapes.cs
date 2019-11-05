@@ -6,12 +6,15 @@ using System.Linq;
 
 public class DeployShapes : MonoBehaviour
 {
+
+    private float exp = 6;
     public GameObject Square;
     public GameObject SquareMoney;
     public GameObject Circle;
     public GameObject Diamond;
     public GameObject Triangle1;
     public GameObject Triangle2;
+    public GameObject LargeCircle;
 
     public GameObject Triangle3;
     public GameObject Triangle4;
@@ -22,6 +25,7 @@ public class DeployShapes : MonoBehaviour
     public GameObject powerBall;
     public GameObject freeze;
     public GameObject speed;
+    public GameObject normalCircle;
 
     private GameObject child; // text
     public static bool running = true;
@@ -52,16 +56,22 @@ public class DeployShapes : MonoBehaviour
                     colors.Add(new Color32(0,215,255,255)); // cyan
                     colors.Add(new Color32(255,0,230,255)); // pink
                     colors.Add(new Color32(247,255,0,255)); // yellow
+                    colors.Add(new Color32(255,0,0,255)); // red original
+
                     explosionList.Add(explosions[0]);
                     explosionList.Add(explosions[1]);
                     explosionList.Add(explosions[2]);
                     explosionList.Add(explosions[3]);
                     explosionList.Add(explosions[4]);
+                    explosionList.Add(explosions[11]);
+
                     largeExplosionList.Add(largeExplosions[0]);
                     largeExplosionList.Add(largeExplosions[1]);
                     largeExplosionList.Add(largeExplosions[2]);
                     largeExplosionList.Add(largeExplosions[3]);
                     largeExplosionList.Add(largeExplosions[4]);
+                    largeExplosionList.Add(largeExplosions[11]);
+
                 } else if (SceneTransition.currTheme == "white") {
                     colors.Add(new Color32(255,255,255,255)); // white
                     explosionList.Add(explosions[5]);
@@ -99,6 +109,28 @@ public class DeployShapes : MonoBehaviour
                     largeExplosionList.Add(largeExplosions[13]);
                     largeExplosionList.Add(largeExplosions[14]);
                     largeExplosionList.Add(largeExplosions[15]);
+                } else if (SceneTransition.currTheme == "wood") {
+                    colors.Add(new Color32(107,142,35,255)); // green original
+                    colors.Add(new Color32(85, 107,47,255));
+                    colors.Add(new Color32(128,128,0,255));
+                    colors.Add(new Color32(46,139,87,255));
+                    colors.Add(new Color32(34,139,34,255)); // forest green
+                    colors.Add(new Color32(139,69,19,255)); // saddlebrown
+
+                    explosionList.Add(explosions[16]);
+                    explosionList.Add(explosions[17]);
+                    explosionList.Add(explosions[18]);
+                    explosionList.Add(explosions[19]);
+                    explosionList.Add(explosions[20]);
+                    explosionList.Add(explosions[21]);
+
+                    largeExplosionList.Add(largeExplosions[16]);
+                    largeExplosionList.Add(largeExplosions[17]);
+                    largeExplosionList.Add(largeExplosions[18]);
+                    largeExplosionList.Add(largeExplosions[19]);
+                    largeExplosionList.Add(largeExplosions[20]);
+                    largeExplosionList.Add(largeExplosions[21]);
+
                 }
 
 
@@ -110,17 +142,16 @@ public class DeployShapes : MonoBehaviour
              // Start is called before the first frame update
             void Start()
             {
-
+                exp = 6;
                 nLine = 0;
                 running = true;
                 Circle.transform.Find("ball").GetComponent<SpriteRenderer>().color = Target.bullet.GetComponent<SpriteRenderer>().color;
                 Circle.transform.Find("ball").GetComponent<SpriteRenderer>().sprite = Target.bullet.GetComponent<SpriteRenderer>().sprite;
 
                 Time.timeScale = 1f;
-                int total = getLineTotal();
-                int beginHealthRow1 =(int) (total / 12);
-                int beginHealthRow2 =  beginHealthRow1 + (int)PlayerController.firePower;
-
+                int total = firstRowFromBase();
+                //int beginHealthRow1 =(int) (total / 12);
+                int beginHealthRow1 = total;
                 //----------------------------------------------------------------------------------------------------------------//
                 // row 2
 
@@ -128,14 +159,12 @@ public class DeployShapes : MonoBehaviour
                     GameObject a;
 
                     a = Instantiate(Square) as GameObject;
-                    Debug.Log(colors.Count);
                     int randColor = randomColor(0, colors.Count);
-                    Debug.Log(randColor);
 
                     // set color of shape
                     a.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
                     // set explosion of shape
-                    Debug.Log(explosionList.Count);
+                    //Debug.Log(explosionList.Count);
                     a.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
 
                     a.transform.position = new Vector2((float)positionsX[i], height2);
@@ -182,12 +211,18 @@ public class DeployShapes : MonoBehaviour
               */
 
               if (nLine % 16 == 0 && nLine > 2) {
+                  int x = Random.Range(0,2);
                   // spawn big shape
                   spawnPositionForBigShape = Random.Range(1, 11);
                   int total = getLineTotal();
-
-                  GameObject g = Instantiate(LargeSquare) as GameObject;
-                  int randColor = randomColor(0, colors.Count);
+                  total = (int)(total * 1.5f);
+                  GameObject g;
+                  if (x == 0) {
+                        g = Instantiate(LargeSquare) as GameObject;
+                  } else {
+                        g = Instantiate(LargeCircle) as GameObject;
+                  }
+                   int randColor = randomColor(0, colors.Count);
                   g.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
                   g.GetComponent<Shape>().largeExplosion = largeExplosions.ElementAt(randColor);
 
@@ -253,7 +288,7 @@ public class DeployShapes : MonoBehaviour
                    }
 
                    int total2 = getLineTotal();
-                   int[] healths = generateXNumbersSumToTotal(numShapes, total2);
+                   int[] healths = generateXNumbersSumToTotal(numShapes, total2 * 3);
                    instantiateShapesPowerUp(shapes, healths, spawnPositionForPowerUp);
                }
               else {
@@ -270,6 +305,16 @@ public class DeployShapes : MonoBehaviour
                     }
 
                     int total = getLineTotal();
+                    if (nLine % 16 == 3 && nLine > 16 ) {
+                        total = total * 2;
+                    } else if (nLine % 16 == 9 && nLine > 16) {
+                        total = total * 2;
+                    }
+                    /*
+                    if (nLine == 9) {
+                        total = (int)(total * 1.5f);
+                    }
+                    */
                     int[] healths = generateXNumbersSumToTotal(numShapes, total);
                     instantiateShapes(shapes, healths);
                 }
@@ -280,7 +325,7 @@ public class DeployShapes : MonoBehaviour
             IEnumerator wave() {
               while (running) {
                 spawnShapes();
-                Debug.Log("dankerino pepperino");
+                //Debug.Log("dankerino pepperino");
                 yield return new WaitForSeconds(respawnTime);
               }
               if (!running) {
@@ -308,7 +353,7 @@ public class DeployShapes : MonoBehaviour
                 }
 
                 int total2 = getLineTotal();
-                int bigTotal = (int)(total2 * 0.5f);
+                int bigTotal = (int)(total2 * 1f);
                 int[] healths = generateXNumbersSumToTotal(numShapes, bigTotal);
                 instantiateShapes(shapes, healths, spawnPositionForBigShape);
             }
@@ -316,17 +361,22 @@ public class DeployShapes : MonoBehaviour
 
             // generate random shapes
             int selectShape() {
-                int roll = Random.Range(0, 101);
-                //GameObject randomObject;
-                if (roll < 23) {
+                int roll = Random.Range(0, 105);
+
+
+
+            if (roll < 23) {
                   //randomObject = Instantiate(Square) as GameObject;
                   return 1;
               } else if (roll >= 23 && roll < 26) {
                   return 7;
-              } else if (roll >= 30 && roll < 39) {
+              } else if (roll >= 26 && roll < 31) {
                 //  randomObject = Instantiate(Circle) as GameObject;
                   return 2;
-              } else if ( roll >= 39 && roll < 50) {
+              }  else if (roll >= 35 && roll < 39){
+                  return 8;
+                  // normal circle
+              }else if ( roll >= 40 && roll < 50) {
                 //  randomObject = Instantiate(Diamond) as GameObject;
                   return 3;
               } else if ( roll >= 50 && roll < 55) {
@@ -335,22 +385,14 @@ public class DeployShapes : MonoBehaviour
             } else if ( roll >= 55 && roll < 60) {
                   return 5;
                 //  randomObject = Instantiate(Hexagon) as GameObject;
-            } else if ( roll >= 60 && roll < 65) {
+            } else if ( roll >= 60 && roll < 70) {
                   return 6;
                 //  randomObject = Instantiate(Triangle) as GameObject;
-            } else if ( roll >= 65 && roll < 70) {
-
-        //large circle
-                  return 0;
-                } else if ( roll >= 80 || roll < 85) {
-        //large Hexagon
-                  return 0;
-                } else if ( roll >= 85 || roll <= 100) {
-                  // empty space
-                  return 0;
-                }
+            } else if ( roll >= 70 && roll <= 100) {
                 return 0;
             }
+            return 0;
+        }
 
             void instantiateShapes(int[] shapes, int[] healths) {
               int z = 0;
@@ -449,6 +491,15 @@ public class DeployShapes : MonoBehaviour
                         }
                 } else if (shapes[i] == 7) {
                     GameObject g2 = Instantiate(SquareMoney) as GameObject;
+                    int randColor = randomColor(0, colors.Count);
+                    g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
+                    g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
+                    g2.transform.position = new Vector2((float)positionsX[i], spawnHeight);
+                    g2.GetComponent<Shape>().health = healths[z];
+                    child = g2.transform.Find("ShapeText").gameObject;
+                    child.GetComponent<TextMeshPro>().SetText(  AbbrevationUtility.AbbreviateNumber(healths[z]) );
+                } else if (shapes[i] == 8) {
+                    GameObject g2 = Instantiate(normalCircle) as GameObject;
                     int randColor = randomColor(0, colors.Count);
                     g2.GetComponent<SpriteRenderer>().color = colors.ElementAt(randColor);
                     g2.GetComponent<Shape>().explosion = explosionList.ElementAt(randColor);
@@ -670,23 +721,106 @@ public class DeployShapes : MonoBehaviour
 
             // get line total
             int getLineTotal() {
-                int total = (int)PlayerController.firePowerAlgorithm * (int)PlayerController.numberBalls;
-                return  total   * 2 *3;
+                // max balls you can shoot out per second
+                float maxBallsPerSecond = 1/UpgradeMenu.fireSpeedValues[UpgradeMenu.fireSpeedLevel - 1] ;
+
+                //Debug.Log("max is " + maxBallsPerSecond + "D" +UpgradeMenu.fireSpeedValues[UpgradeMenu.fireSpeedLevel - 1] );
+                int left = PlayerController.leftNumberBalls;
+                int middle = PlayerController.numberBalls;
+                int right = PlayerController.rightNumberBalls;
+
+
+
+                // if you have more balls than maxballspersecond then the formula only takes into acoutn dps and doesnt disqualify you for extra balls you have
+                if (PlayerController.leftNumberBalls > maxBallsPerSecond) {
+                    left = (int)maxBallsPerSecond;
+                } else {
+                    // else if balls is less than max use less number balls for algorithm
+                    left = PlayerController.leftNumberBalls;
+                }
+                if (PlayerController.rightNumberBalls > maxBallsPerSecond) {
+                    right =(int) maxBallsPerSecond;
+                } else {
+                    right = PlayerController.rightNumberBalls;
+                }
+                if (PlayerController.numberBalls > maxBallsPerSecond) {
+                    middle =(int) maxBallsPerSecond;
+                } else {
+                    middle = PlayerController.numberBalls;
+                }
+
+
+                //int total = (int)PlayerController.firePowerAlgorithm * ((int)PlayerController.numberBalls + PlayerController.leftNumberBalls + PlayerController.rightNumberBalls);
+                //Debug.Log(total + "total is ");
+                //return  total   * 2 * 3;
+                float dps = (left + right + middle ) * (float)PlayerController.firePowerAlgorithm;
+                //DPS = total balls you can shoot[1/fr or if less than 1/fr total balls] /s (30) * damage (5) = 150 dps
+/*
+                if (dps < 30) {
+                    dps = 30f;
+                }
+    */
+                float currExp = exp;
+                if (nLine > 105) {
+                    exp += 0.16f;
+                }
+                else if (nLine > 51) {
+                    exp += 0.13f;
+                } else if (nLine > 32) {
+                    exp += 0.11f;
+                }
+                else {
+                    exp += 0.09f;
+                }
+
+                Debug.Log((int)(dps * currExp) + "d"  + exp + "lien is " + nLine);
+
+                return (int)(dps * exp);
+                //int scaledDPS = convertDPSfromBase((int)dps);
+                //return (int)(scaledDPS * exp);
+
             }
+
+            int convertDPSfromBase(int dps) {
+                int newDPS = (int)((dps/5) * 30);
+                return newDPS;
+            }
+
             // returns array of size x that sum to total
             int[] generateXNumbersSumToTotal(int x, int total) {
+                if (x == 0) {
+                    return null;
+                }
                 int[] numbers = new int[x];
                 int currSum = 0;
-                total++;
+                //total++; // for random range as max is exclusive
                 //Debug.Log("total = " + total);
                 //Debug.Log((total - currSum) * 1/2);
                 int i = 0;
                   for (i = 0; i < x - 1; i++) {
                     int roll = Random.Range(1, ((total - currSum) * 1/2) );
+                    //Debug.Log((total - currSum) * 1/2);
+
+
                     numbers[i] = roll;
                     currSum += roll;
                   }
-                  numbers[i] = total - currSum;
+                  if (currSum >= total) {
+                      numbers[i] = (int)(total/12);
+                  } else {
+                      numbers[i] = total - currSum;
+                  }
+
+                  // uniform distribution largest numbers (0)
+                  if (x > 1) {
+                      int newIndex = Random.Range(0,x);
+
+                      int temp = numbers[newIndex];
+                      numbers[newIndex] = numbers[0];
+                      numbers[0] = temp;
+                  }
+
+
                 return numbers;
             }
 
@@ -717,5 +851,46 @@ public class DeployShapes : MonoBehaviour
                          }
                          return number.ToString();
                      }
+                 }
+
+                 int firstRowFromBase() {
+
+                     float maxBallsPerSecond = 1/UpgradeMenu.fireSpeedValues[UpgradeMenu.fireSpeedLevel - 1] ;
+
+                     //Debug.Log("max is " + maxBallsPerSecond + "D" +UpgradeMenu.fireSpeedValues[UpgradeMenu.fireSpeedLevel - 1] );
+                     int left = PlayerController.leftNumberBalls;
+                     int middle = PlayerController.numberBalls;
+                     int right = PlayerController.rightNumberBalls;
+
+
+
+                     // if you have more balls than maxballspersecond then the formula only takes into acoutn dps and doesnt disqualify you for extra balls you have
+                     if (PlayerController.leftNumberBalls > maxBallsPerSecond) {
+                         left = (int)maxBallsPerSecond;
+                     } else {
+                         // else if balls is less than max use less number balls for algorithm
+                         left = PlayerController.leftNumberBalls;
+                     }
+                     if (PlayerController.rightNumberBalls > maxBallsPerSecond) {
+                         right =(int) maxBallsPerSecond;
+                     } else {
+                         right = PlayerController.rightNumberBalls;
+                     }
+                     if (PlayerController.numberBalls > maxBallsPerSecond) {
+                         middle =(int) maxBallsPerSecond;
+                     } else {
+                         middle = PlayerController.numberBalls;
+                     }
+
+
+                     //int total = (int)PlayerController.firePowerAlgorithm * ((int)PlayerController.numberBalls + PlayerController.leftNumberBalls + PlayerController.rightNumberBalls);
+                     //Debug.Log(total + "total is ");
+                     //return  total   * 2 * 3;
+                     float dps = (left + right + middle ) * (float)PlayerController.firePowerAlgorithm;
+                     // base is 5dps = 2 so scale it up
+                     float scaledDps = dps / 5f;
+                     //Debug.Log("scaleddps is " + scaledDps);
+                     int total = (int)(scaledDps * 2);
+                     return total;
                  }
 }

@@ -4020,7 +4020,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2048791250}
-  - component: {fileID: 2048791251}
   m_Layer: 5
   m_Name: Game
   m_TagString: Untagged
@@ -4051,44 +4050,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2048791251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2048791249}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab07d37bb62980d4eb686d87f72f5a37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Square: {fileID: 2211905883103148451, guid: 9a8ae66cd468c1c47a00682bc255df23, type: 3}
-  SquareMoney: {fileID: 0}
-  Circle: {fileID: 6652271334194931482, guid: aae9ea7633c5bd642a97fb8eded5b969, type: 3}
-  Diamond: {fileID: 1278038600001674044, guid: 6e620240cf2428042bd734a8a5fd3f45, type: 3}
-  Triangle1: {fileID: 7797497949251840299, guid: 7bece233bb5b0fb448167acb5a8f65a8,
-    type: 3}
-  Triangle2: {fileID: 8566149600396407721, guid: dc6e531970bfb6943b8da10808b24184,
-    type: 3}
-  Triangle3: {fileID: 6471302641088867035, guid: 974c9690861bee442a75bacb8c367d75,
-    type: 3}
-  Triangle4: {fileID: 6637674271972503457, guid: a892f1d87e8a89e489ee152cfc2c8fdf,
-    type: 3}
-  Hexagon: {fileID: 6935406206790223102, guid: 0ebd0031bc7d0ef499367f741c62f0ec, type: 3}
-  Pentagon: {fileID: 1975938753880297405, guid: 2d99ab814a93ecf42ae4782129e8568b,
-    type: 3}
-  LargeSquare: {fileID: 1778288460004724961, guid: 9b2b5df0fcdf5c443bd3adff5bab9a85,
-    type: 3}
-  powerBall: {fileID: 497937812624785673, guid: cff67ea6fb250e3499531c96a30526ef,
-    type: 3}
-  freeze: {fileID: 1583564677146634627, guid: cff9f4eb99c8b3240a635a34ff958cab, type: 3}
-  speed: {fileID: 325091046059364150, guid: 944ccbd1549dcc940a0e56d70c22bf53, type: 3}
-  explosion: {fileID: 0}
-  respawnTime: 2.2
-  height2: 4.15
-  height1: 3.7
-  spawnHeight: 4.6
 --- !u!1 &2096030348
 GameObject:
   m_ObjectHideFlags: 0

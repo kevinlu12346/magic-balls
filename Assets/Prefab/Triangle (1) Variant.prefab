@@ -92,6 +92,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 5509133969809346800, guid: a892f1d87e8a89e489ee152cfc2c8fdf,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 93100714caf489e4b94aa58bc4ac8787, type: 2}
     - target: {fileID: 6637674273116691290, guid: a892f1d87e8a89e489ee152cfc2c8fdf,
         type: 3}
       propertyPath: m_Mesh
@@ -100,12 +105,12 @@ PrefabInstance:
     - target: {fileID: 6637674273116691300, guid: a892f1d87e8a89e489ee152cfc2c8fdf,
         type: 3}
       propertyPath: m_havePropertiesChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6637674273116691300, guid: a892f1d87e8a89e489ee152cfc2c8fdf,
         type: 3}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a892f1d87e8a89e489ee152cfc2c8fdf, type: 3}

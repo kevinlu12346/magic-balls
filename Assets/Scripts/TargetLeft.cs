@@ -40,8 +40,8 @@ public class TargetLeft : MonoBehaviour
          if (bullet == powerBall && running == false) {
             running = true;
             bullet = powerBall;
-            PlayerController.firePowerAlgorithm = PlayerController.firePower;
-            PlayerController.firePower *= 2;
+            //PlayerController.firePowerAlgorithm = PlayerController.firePower;
+            //PlayerController.firePower *= 2;
             StartCoroutine(powerBallDeactivate());
         }
         // get mouse position
@@ -144,7 +144,7 @@ public class TargetLeft : MonoBehaviour
      }
 
      IEnumerator powerBallDeactivate() {
-         yield return new WaitForSeconds(10.0f);
+         yield return new WaitForSeconds(11.0f);
          PlayerController.firePower = PlayerController.firePowerAlgorithm;
          bullet = Target.bulletPlaceHolder;
 
