@@ -39,6 +39,8 @@ public class MyPauseMenu : MonoBehaviour
             this.GetComponent<MyPauseMenu>().enabled = true;
         }
 */
+
+/*
         if (Input.GetMouseButtonDown(0)) {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
@@ -65,6 +67,26 @@ public class MyPauseMenu : MonoBehaviour
         }
 
     }
+    */
 
+    if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Began) {
+             if (IsPointerOverGameObject (Input.GetTouch (0).fingerId)) {
+                     Debug.Log("Hit UI, Ignore Touch");
+             } else {
+                     Debug.Log("Handle Touch");
+                     Time.timeScale = 1f;
+                     camera.GetComponent<Target>().enabled = true; // stop player aimer
+                     this.transform.gameObject.SetActive(false);
+             }
+    }
+
+
+
+}
+bool IsPointerOverGameObject( int fingerId )
+{
+   EventSystem eventSystem = EventSystem.current;
+   return ( eventSystem.IsPointerOverGameObject( fingerId )
+       && eventSystem.currentSelectedGameObject != null );
 }
 }

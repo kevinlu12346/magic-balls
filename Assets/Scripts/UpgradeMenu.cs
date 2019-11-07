@@ -13,7 +13,7 @@ public class UpgradeMenu : MonoBehaviour
     public static int numberBallsLevel = 5;
     public static int fireSpeedLevel = 1;
     public static int firePowerLevel = 1;
-
+    public Player player; // reference to player object in hierachy
 
     public static int leftFireBallCost = 20;
     public static int leftNumberBallsLevel = 0;
@@ -31,6 +31,27 @@ public class UpgradeMenu : MonoBehaviour
     // Start is called everytime the scene is loaded so variables are set on load
     void Start()
     {
+
+        firePowerLevel = player.power;
+        firePowerCost = player.powerCost;
+
+        fireSpeedLevel = player.fireRate;
+        fireSpeedCost = player.fireRateCost;
+        Debug.Log(fireSpeedLevel);
+
+        numberBallsLevel = player.numberBalls;
+        numberBallsCost = player.numberBallsCost;
+
+        leftNumberBallsLevel = player.leftFireBall;
+        leftFireBallCost = player.leftFireBallCost;
+
+        rightNumberBallsLevel = player.rightFireBall;
+        rightFireBallCost = player.rightFireBallCost;
+
+
+
+
+
         child = transform.Find("Image").Find("scrollCanvas").Find("shooterStats").Find("numberBalls").Find("level").Find("levelText").gameObject;
         child.GetComponent<TextMeshProUGUI>().SetText(numberBallsLevel.ToString());
 
@@ -91,6 +112,7 @@ public class UpgradeMenu : MonoBehaviour
         if (GameManager.money >= fireSpeedCost && fireSpeedLevel < 18) {
             // max level is 18
             fireSpeedLevel++;
+            player.fireRate++;
             //Target.fireRate = fireSpeedValues[fireSpeedLevel - 1];
             GameManager.money -= fireSpeedCost;
             if (fireSpeedLevel == 18) {
@@ -101,17 +123,20 @@ public class UpgradeMenu : MonoBehaviour
 
             } else {
                 fireSpeedCost += 10;
+                player.fireRateCost += 10;
                 child = transform.Find("Image").Find("scrollCanvas").Find("shooterStats").Find("fireSpeed").Find("level").Find("levelText").gameObject;
                 child.GetComponent<TextMeshProUGUI>().SetText(fireSpeedLevel.ToString());
                 child = transform.Find("Image").Find("scrollCanvas").Find("shooterStats").Find("fireSpeed").Find("costButton").Find("moneyScore").gameObject;
                 child.GetComponent<TextMeshPro>().SetText(fireSpeedCost.ToString());
             }
+            player.SavePlayer();
         }
     }
     public void upgradeFirePower() {
         if (GameManager.money >= firePowerCost && firePowerLevel < 999) {
             // max level is 18
             firePowerLevel++;
+            player.power++;
             //Target.fireRate = fireSpeedValues[fireSpeedLevel - 1];
             GameManager.money -= firePowerCost;
             if (firePowerLevel == 999) {
@@ -130,12 +155,15 @@ public class UpgradeMenu : MonoBehaviour
                 child = transform.Find("Image").Find("scrollCanvas").Find("shooterStats").Find("firePower").Find("costButton").Find("moneyScore").gameObject;
                 child.GetComponent<TextMeshPro>().SetText(firePowerCost.ToString());
             }
+            player.SavePlayer();
+
         }
     }
     public void upgradeNumberBalls() {
         if (GameManager.money >= numberBallsCost && numberBallsLevel < 100) {
             // max level is 18
             numberBallsLevel++;
+            player.numberBalls++;
             //Target.fireRate = fireSpeedValues[fireSpeedLevel - 1];
             GameManager.money -= numberBallsCost;
             if (numberBallsLevel == 100) {
@@ -149,11 +177,14 @@ public class UpgradeMenu : MonoBehaviour
             } else {
                 Debug.Log("stacked");
                 numberBallsCost += 10;
+                player.numberBallsCost += 10;
                 child = transform.Find("Image").Find("scrollCanvas").Find("shooterStats").Find("numberBalls").Find("level").Find("levelText").gameObject;
                 child.GetComponent<TextMeshProUGUI>().SetText(numberBallsLevel.ToString());
                 child = transform.Find("Image").Find("scrollCanvas").Find("shooterStats").Find("numberBalls").Find("costButton").Find("moneyScore").gameObject;
                 child.GetComponent<TextMeshPro>().SetText(numberBallsCost.ToString());
             }
+            player.SavePlayer();
+
         }
     }
     IEnumerator turnOffCanvas(float seconds) {
@@ -167,6 +198,7 @@ public class UpgradeMenu : MonoBehaviour
         if (GameManager.money >= leftFireBallCost && leftNumberBallsLevel < 100) {
             // max level is 18
             leftNumberBallsLevel++;
+            player.leftFireBall++;
             //Target.fireRate = fireSpeedValues[fireSpeedLevel - 1];
             GameManager.money -= leftFireBallCost;
             if (leftNumberBallsLevel == 100) {
@@ -178,6 +210,7 @@ public class UpgradeMenu : MonoBehaviour
             } else {
 
                 leftFireBallCost += 5;
+                player.leftFireBallCost += 5;
 
                 child = transform.Find("Image").Find("scrollCanvas").Find("skillsPanel").Find("leftFireBall").Find("level").Find("levelText").gameObject;
                 child.GetComponent<TextMeshProUGUI>().SetText(leftNumberBallsLevel.ToString());
@@ -185,6 +218,9 @@ public class UpgradeMenu : MonoBehaviour
                 child.GetComponent<TextMeshPro>().SetText(leftFireBallCost.ToString());
 
             }
+            Debug.Log("saving");
+            player.SavePlayer();
+
         }
     }
 
@@ -192,6 +228,7 @@ public class UpgradeMenu : MonoBehaviour
         if (GameManager.money >= rightFireBallCost && rightNumberBallsLevel < 100) {
             // max level is 18
             rightNumberBallsLevel++;
+            player.rightFireBall++;
             //Target.fireRate = fireSpeedValues[fireSpeedLevel - 1];
             GameManager.money -= rightFireBallCost;
             if (rightNumberBallsLevel == 100) {
@@ -203,6 +240,7 @@ public class UpgradeMenu : MonoBehaviour
             } else {
 
                 rightFireBallCost += 5;
+                player.rightFireBallCost += 5;
 
                 child = transform.Find("Image").Find("scrollCanvas").Find("skillsPanel").Find("rightFireBall").Find("level").Find("levelText").gameObject;
                 child.GetComponent<TextMeshProUGUI>().SetText(rightNumberBallsLevel.ToString());
@@ -210,6 +248,8 @@ public class UpgradeMenu : MonoBehaviour
                 child.GetComponent<TextMeshPro>().SetText(rightFireBallCost.ToString());
 
             }
+            player.SavePlayer();
+
         }
     }
 }

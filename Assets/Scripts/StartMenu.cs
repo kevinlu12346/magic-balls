@@ -11,11 +11,22 @@ public class StartMenu : MonoBehaviour
     public GameObject[] balls;
 
     public GameObject game;
+    public Player player;
     private GameObject child;
     // Start is called before the first frame update
     public GameObject canvas;
     void Start()
     {
+        // grab data from save file
+        if (player.muted != null) {
+            if (player.muted) {
+                SceneTransition.muted = true;
+            } else {
+                SceneTransition.muted = false;
+            }
+        }
+Debug.Log(SceneTransition.muted);
+
         if (SceneTransition.muted == true) {
             button.GetComponent<Image>().enabled = false;
             unmuteButton.GetComponent<Image>().enabled = true;
@@ -33,7 +44,7 @@ public class StartMenu : MonoBehaviour
         // reset game variables
         Time.timeScale = 1f;
         PlayerController.firePower = PlayerController.firePowerAlgorithm;
-        BallMovement.multiplier = 1f;
+        BallMovement.multiplier = 4f; // this one to change ball movement speed
         Shape.moveDown = true;
         DeployShapes.running = true;
         Target.isPower = false;
@@ -59,12 +70,14 @@ public class StartMenu : MonoBehaviour
         // switch buttons
         button.GetComponent<Image>().enabled = false;
         unmuteButton.GetComponent<Image>().enabled = true;
-
+        player.muted = true;
+        player.SavePlayer();
     }
     public void unmute() {
         SceneTransition.muted = false;
         unmuteButton.GetComponent<Image>().enabled = false;
         button.GetComponent<Image>().enabled = true;
-
+        player.muted = false;
+        player.SavePlayer();
     }
 }

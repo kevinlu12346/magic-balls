@@ -770,12 +770,12 @@ public class DeployShapes : MonoBehaviour
                     exp += 0.11f;
                 }
                 else {
-                    exp += 0.09f;
+                    exp += 0.08f;
                 }
 
                 Debug.Log((int)(dps * currExp) + "d"  + exp + "lien is " + nLine);
 
-                return (int)(dps * exp);
+                return (int)(dps * exp * 0.95 * 1.5); // * 2 for double ball movement speed
                 //int scaledDPS = convertDPSfromBase((int)dps);
                 //return (int)(scaledDPS * exp);
 
@@ -886,11 +886,11 @@ public class DeployShapes : MonoBehaviour
                      //int total = (int)PlayerController.firePowerAlgorithm * ((int)PlayerController.numberBalls + PlayerController.leftNumberBalls + PlayerController.rightNumberBalls);
                      //Debug.Log(total + "total is ");
                      //return  total   * 2 * 3;
-                     float dps = (left + right + middle ) * (float)PlayerController.firePowerAlgorithm;
+                     float dps = (left + right + middle ) * (float)PlayerController.firePowerAlgorithm ;
                      // base is 5dps = 2 so scale it up
                      float scaledDps = dps / 5f;
                      //Debug.Log("scaleddps is " + scaledDps);
                      int total = (int)(scaledDps * 2);
-                     return total;
+                     return (int)(total * 1.5f);
                  }
 }

@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
  public class SceneTransition : MonoBehaviour
 {
-
+    public Player player;
     // 0 = startMenu
     // 1 = game
     public GameObject camera;
@@ -41,10 +41,16 @@ using UnityEngine.EventSystems;
         SceneManager.LoadScene(2);
     }
 
-    void Start()
+    void Awake()
     {
+        Debug.Log(player.squareTheme);
         gameOver = false;
-
+        if (player.ballTheme != null ) {
+        currBall = player.ballTheme;
+        }
+        if (player.squareTheme !=null) {
+            currTheme = player.squareTheme;
+        }
     }
     void Update()
     {
@@ -71,7 +77,7 @@ using UnityEngine.EventSystems;
             }
         }
         */
-
+/*
         Scene scene = SceneManager.GetActiveScene();
         if (Input.GetMouseButtonDown(0) && scene.buildIndex == 0) {
 
@@ -83,7 +89,6 @@ using UnityEngine.EventSystems;
 
           if (EventSystem.current.IsPointerOverGameObject()) {
               // click upgrade button load upgrade page
-              Debug.Log("wanker");
               Debug.Log(EventSystem.current.currentSelectedGameObject);
           }
            else if (hit.collider != null) {
@@ -99,6 +104,19 @@ using UnityEngine.EventSystems;
               //hit.collider.attachedRigidbody.AddForce(Vector2.up);
           }
       }
+      */
+      Scene scene = SceneManager.GetActiveScene();
+
+      if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Began && scene.buildIndex == 0) {
+               if (IsPointerOverGameObject (Input.GetTouch (0).fingerId)) {
+                       Debug.Log("Hit UI, Ignore Touch");
+               } else {
+                       Debug.Log("Handle Touch");
+                       SceneManager.LoadScene(1);
+               }
+      }
+
+
 
 
 
@@ -143,6 +161,14 @@ using UnityEngine.EventSystems;
              child.SetActive(true);
              child = reviveCanvas.transform.Find("revivePanel").gameObject;
              child.SetActive(false);
+         }
+
+
+         bool IsPointerOverGameObject( int fingerId )
+         {
+            EventSystem eventSystem = EventSystem.current;
+            return ( eventSystem.IsPointerOverGameObject( fingerId )
+                && eventSystem.currentSelectedGameObject != null );
          }
 
 }

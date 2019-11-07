@@ -51,7 +51,7 @@ public class Shape : MonoBehaviour
 
         // move blocks down each frame
         if (moveDown && moveDownEndGame) {
-        transform.position = new Vector2(transform.position.x, transform.position.y - (float)moveSpeed *Time.deltaTime);
+        transform.position = new Vector2(transform.position.x, transform.position.y - (float)moveSpeed *Time.deltaTime );
         } else {
         //transform.position = new Vector2(transform.position.x, transform.position.y + (float)moveSpeed *Time.deltaTime);
         }

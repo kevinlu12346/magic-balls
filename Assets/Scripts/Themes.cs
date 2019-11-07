@@ -5,6 +5,7 @@ using UnityEngine;
 public class Themes : MonoBehaviour
 {
     private GameObject child;
+    public Player player;
     // Start is called before the first frame update
     public GameObject fadecanvas;
     public void ballPage() {
@@ -19,7 +20,6 @@ public class Themes : MonoBehaviour
     {
         StartCoroutine(turnOffCanvas(0.5f));
         //currSelectedBall= transform.Find("Panel").Find("Objects").Find("BallPanel").Find("greyBall").gameObject;
-
 
 
         //on pageLoad select currBall and show it is on by turning it green
@@ -47,6 +47,9 @@ public class Themes : MonoBehaviour
 
         // set currselected ball in scenetransition
         SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("greyBall").gameObject.name;
+        // save balltheme
+        player.ballTheme = SceneTransition.currBall;
+        player.SavePlayer();
 
         // set currselected ball to green as selected
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("greyBall").Find("selected").gameObject;
@@ -61,7 +64,8 @@ public class Themes : MonoBehaviour
 
 
         SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("redBall").gameObject.name;
-
+        player.ballTheme = SceneTransition.currBall;
+        player.SavePlayer();
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("redBall").Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
 
@@ -75,7 +79,8 @@ public class Themes : MonoBehaviour
 
 
         SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("purpleBall").gameObject.name;
-
+        player.ballTheme = SceneTransition.currBall;
+        player.SavePlayer();
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("purpleBall").Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
     }
@@ -85,7 +90,8 @@ public class Themes : MonoBehaviour
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find(SceneTransition.currBall).Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(65, 65, 65, 255);
         SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("yellowBall").gameObject.name;
-
+        player.ballTheme = SceneTransition.currBall;
+        player.SavePlayer();
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("yellowBall").Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
     }
@@ -95,7 +101,8 @@ public class Themes : MonoBehaviour
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find(SceneTransition.currBall).Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(65, 65, 65, 255);
         SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("blueBall").gameObject.name;
-
+        player.ballTheme = SceneTransition.currBall;
+        player.SavePlayer();
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("blueBall").Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
     }
@@ -105,7 +112,8 @@ public class Themes : MonoBehaviour
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find(SceneTransition.currBall).Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(65, 65, 65, 255);
         SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("orangeBall").gameObject.name;
-
+        player.ballTheme = SceneTransition.currBall;
+        player.SavePlayer();
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("orangeBall").Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
     }
@@ -115,7 +123,8 @@ public class Themes : MonoBehaviour
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find(SceneTransition.currBall).Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(65, 65, 65, 255);
         SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("greenBall").gameObject.name;
-
+        player.ballTheme = SceneTransition.currBall;
+        player.SavePlayer();
 
 
 
@@ -128,7 +137,8 @@ public class Themes : MonoBehaviour
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find(SceneTransition.currBall).Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(65, 65, 65, 255);
         SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("cyanBall").gameObject.name;
-
+        player.ballTheme = SceneTransition.currBall;
+        player.SavePlayer();
         // activate curr
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("cyanBall").Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
@@ -140,7 +150,8 @@ public class Themes : MonoBehaviour
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find(SceneTransition.currBall).Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(65, 65, 65, 255);
         SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("pinkBall").gameObject.name;
-
+        player.ballTheme = SceneTransition.currBall;
+        player.SavePlayer();
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("pinkBall").Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
     }
@@ -150,7 +161,8 @@ public class Themes : MonoBehaviour
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find(SceneTransition.currBall).Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(65, 65, 65, 255);
         SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("whiteBall").gameObject.name;
-
+        player.ballTheme = SceneTransition.currBall;
+        player.SavePlayer();
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("whiteBall").Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
     }
@@ -160,7 +172,8 @@ public class Themes : MonoBehaviour
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find(SceneTransition.currBall).Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(65, 65, 65, 255);
         SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("greyDiamond").gameObject.name;
-
+        player.ballTheme = SceneTransition.currBall;
+        player.SavePlayer();
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("greyDiamond").Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
     }
@@ -170,7 +183,8 @@ public class Themes : MonoBehaviour
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find(SceneTransition.currBall).Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(65, 65, 65, 255);
         SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("redDiamond").gameObject.name;
-
+        player.ballTheme = SceneTransition.currBall;
+        player.SavePlayer();
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("redDiamond").Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
     }
@@ -180,7 +194,8 @@ public class Themes : MonoBehaviour
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find(SceneTransition.currBall).Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(65, 65, 65, 255);
         SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("purpleDiamond").gameObject.name;
-
+        player.ballTheme = SceneTransition.currBall;
+        player.SavePlayer();
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("purpleDiamond").Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
     }
@@ -190,7 +205,8 @@ public class Themes : MonoBehaviour
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find(SceneTransition.currBall).Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(65, 65, 65, 255);
         SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("yellowDiamond").gameObject.name;
-
+        player.ballTheme = SceneTransition.currBall;
+        player.SavePlayer();
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("yellowDiamond").Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
     }
@@ -200,7 +216,8 @@ public class Themes : MonoBehaviour
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find(SceneTransition.currBall).Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(65, 65, 65, 255);
         SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("blueDiamond").gameObject.name;
-
+        player.ballTheme = SceneTransition.currBall;
+        player.SavePlayer();
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("blueDiamond").Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
     }
@@ -210,7 +227,8 @@ public class Themes : MonoBehaviour
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find(SceneTransition.currBall).Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(65, 65, 65, 255);
         SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("orangeDiamond").gameObject.name;
-
+        player.ballTheme = SceneTransition.currBall;
+        player.SavePlayer();
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("orangeDiamond").Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
     }
@@ -221,7 +239,8 @@ public class Themes : MonoBehaviour
         child.GetComponent<SpriteRenderer>().color =  new Color32(65, 65, 65, 255);
         SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("greenDiamond").gameObject.name;
 
-
+        player.ballTheme = SceneTransition.currBall;
+        player.SavePlayer();
 
 
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("greenDiamond").Find("selected").gameObject;
@@ -233,7 +252,8 @@ public class Themes : MonoBehaviour
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find(SceneTransition.currBall).Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(65, 65, 65, 255);
         SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("cyanDiamond").gameObject.name;
-
+        player.ballTheme = SceneTransition.currBall;
+        player.SavePlayer();
         // activate curr
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("cyanDiamond").Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
@@ -245,7 +265,8 @@ public class Themes : MonoBehaviour
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find(SceneTransition.currBall).Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(65, 65, 65, 255);
         SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("pinkDiamond").gameObject.name;
-
+        player.ballTheme = SceneTransition.currBall;
+        player.SavePlayer();
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("pinkDiamond").Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
     }
@@ -255,7 +276,8 @@ public class Themes : MonoBehaviour
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find(SceneTransition.currBall).Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(65, 65, 65, 255);
         SceneTransition.currBall = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("whiteDiamond").gameObject.name;
-
+        player.ballTheme = SceneTransition.currBall;
+        player.SavePlayer();
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find("whiteDiamond").Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
     }
@@ -276,7 +298,8 @@ public class Themes : MonoBehaviour
 
         // set currselected ball in scenetransition
         SceneTransition.currTheme = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("themes").Find("white").gameObject.name;
-
+        player.squareTheme = SceneTransition.currTheme;
+        player.SavePlayer();
         // set currselected ball to green as selected
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("themes").Find("white").Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
@@ -289,7 +312,8 @@ public class Themes : MonoBehaviour
 
         // set currselected ball in scenetransition
         SceneTransition.currTheme = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("themes").Find("colorful").gameObject.name;
-
+        player.squareTheme = SceneTransition.currTheme;
+        player.SavePlayer();
         // set currselected ball to green as selected
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("themes").Find("colorful").Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
@@ -302,7 +326,8 @@ public class Themes : MonoBehaviour
 
         // set currselected ball in scenetransition
         SceneTransition.currTheme = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("themes").Find("red").gameObject.name;
-
+        player.squareTheme = SceneTransition.currTheme;
+        player.SavePlayer();
         // set currselected ball to green as selected
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("themes").Find("red").Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
@@ -315,7 +340,8 @@ public class Themes : MonoBehaviour
 
         // set currselected ball in scenetransition
         SceneTransition.currTheme = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("themes").Find("blue").gameObject.name;
-
+        player.squareTheme = SceneTransition.currTheme;
+        player.SavePlayer();
         // set currselected ball to green as selected
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("themes").Find("blue").Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
@@ -328,7 +354,8 @@ public class Themes : MonoBehaviour
 
         // set currselected ball in scenetransition
         SceneTransition.currTheme = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("themes").Find("wood").gameObject.name;
-
+        player.squareTheme = SceneTransition.currTheme;
+        player.SavePlayer();
         // set currselected ball to green as selected
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("themes").Find("wood").Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);

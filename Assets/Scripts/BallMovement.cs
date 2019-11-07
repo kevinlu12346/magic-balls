@@ -9,7 +9,7 @@ public class BallMovement : MonoBehaviour
     private GameObject child;
     private int health = 1;
     public GameObject ball;
-    public static float multiplier = 1;
+    public static float multiplier = 10; // not this one use other one in startmenu
     public int type;
     public static bool gameOver = false;
     Vector3 currDir;
