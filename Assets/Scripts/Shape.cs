@@ -51,7 +51,7 @@ public class Shape : MonoBehaviour
 
         // move blocks down each frame
         if (moveDown && moveDownEndGame) {
-        transform.position = new Vector2(transform.position.x, transform.position.y - (float)moveSpeed *Time.deltaTime );
+        transform.position = new Vector2(transform.position.x, transform.position.y - (float)moveSpeed *Time.deltaTime);
         } else {
         //transform.position = new Vector2(transform.position.x, transform.position.y + (float)moveSpeed *Time.deltaTime);
         }
@@ -77,7 +77,7 @@ public class Shape : MonoBehaviour
         */
     }
 
-
+    // on lose game
     void OnCollisionEnter2D(Collision2D collision) {
          if (collision.collider.tag == "redLine") {
              SceneTransition.gameOver = true;
@@ -166,7 +166,8 @@ public class Shape : MonoBehaviour
                 }
                 GameObject boom = Instantiate(explosion);
                 boom.transform.position = new Vector3(transform.position.x, transform.position.y, -5.39f);
-                    GameManager.money++;
+                    SceneTransition.money++;
+
 
                 anim.enabled = true;
                 collider.enabled = false;

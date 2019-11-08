@@ -1066,6 +1066,7 @@ MonoBehaviour:
   reviveCanvas: {fileID: 0}
   gameOverCanvas: {fileID: 0}
   canvas: {fileID: 0}
+  ga: {fileID: 0}
 --- !u!1 &75102652
 GameObject:
   m_ObjectHideFlags: 0
@@ -1730,7 +1731,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &112832439
 Transform:
   m_ObjectHideFlags: 0
@@ -5311,7 +5312,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20, y: 630}
+  m_AnchoredPosition: {x: 0, y: 630}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &409772991
@@ -10623,7 +10624,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0
-  m_ScrollSensitivity: 100
+  m_ScrollSensitivity: 124
   m_Viewport: {fileID: 0}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -18333,7 +18334,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1323598476
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19388,6 +19389,9 @@ MonoBehaviour:
   rightFireBallCost: 20
   ballTheme: greyBall
   squareTheme: colorful
+  muted: 0
+  highscore: 0
+  money: 0
 --- !u!1 &1363669204
 GameObject:
   m_ObjectHideFlags: 0

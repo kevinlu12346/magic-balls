@@ -32,21 +32,6 @@ public class UpgradeMenu : MonoBehaviour
     void Start()
     {
 
-        firePowerLevel = player.power;
-        firePowerCost = player.powerCost;
-
-        fireSpeedLevel = player.fireRate;
-        fireSpeedCost = player.fireRateCost;
-        Debug.Log(fireSpeedLevel);
-
-        numberBallsLevel = player.numberBalls;
-        numberBallsCost = player.numberBallsCost;
-
-        leftNumberBallsLevel = player.leftFireBall;
-        leftFireBallCost = player.leftFireBallCost;
-
-        rightNumberBallsLevel = player.rightFireBall;
-        rightFireBallCost = player.rightFireBallCost;
 
 
 
@@ -95,26 +80,55 @@ public class UpgradeMenu : MonoBehaviour
         child.GetComponent<TextMeshPro>().SetText(50.ToString());
 */
         child = game.transform.Find("moneyScore").gameObject;
-        child.GetComponent<TextMeshPro>().text = GameManager.money.ToString();
-
+        child.GetComponent<TextMeshPro>().text = SceneTransition.money.ToString();
         child = fadecanvas.transform.Find("panelFadeTransition").gameObject;
         child.SetActive(true);
         StartCoroutine(turnOffCanvas(0.5f));
+
+
+        if (fireSpeedLevel == 18) {
+            Debug.Log("maxing");
+            child = transform.Find("Image").Find("scrollCanvas").Find("shooterStats").Find("fireSpeed").Find("costButton").Find("moneyScore").gameObject;
+            child.GetComponent<TextMeshPro>().SetText("Max");
+        }
+        if (firePowerLevel == 999) {
+
+            child = transform.Find("Image").Find("scrollCanvas").Find("shooterStats").Find("firePower").Find("costButton").Find("moneyScore").gameObject;
+            child.GetComponent<TextMeshPro>().SetText("Max");
+
+        }
+        if (numberBallsLevel == 100) {
+
+            child = transform.Find("Image").Find("scrollCanvas").Find("shooterStats").Find("numberBalls").Find("costButton").Find("moneyScore").gameObject;
+            child.GetComponent<TextMeshPro>().SetText("Max");
+
+        }
+        if (leftNumberBallsLevel == 100) {
+            child = transform.Find("Image").Find("scrollCanvas").Find("skillsPanel").Find("leftFireBall").Find("costButton").Find("moneyScore").gameObject;
+            child.GetComponent<TextMeshPro>().SetText("Max");
+
+        }
+        if (rightNumberBallsLevel == 100) {
+            child = transform.Find("Image").Find("scrollCanvas").Find("skillsPanel").Find("rightFireBall").Find("costButton").Find("moneyScore").gameObject;
+            child.GetComponent<TextMeshPro>().SetText("Max");
+
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         child = game.transform.Find("moneyScore").gameObject;
-        child.GetComponent<TextMeshPro>().text = GameManager.money.ToString();
+        child.GetComponent<TextMeshPro>().text = SceneTransition.money.ToString();
     }
     public void upgradeFireSpeed() {
-        if (GameManager.money >= fireSpeedCost && fireSpeedLevel < 18) {
+        if (SceneTransition.money >= fireSpeedCost && fireSpeedLevel < 18) {
             // max level is 18
             fireSpeedLevel++;
             player.fireRate++;
             //Target.fireRate = fireSpeedValues[fireSpeedLevel - 1];
-            GameManager.money -= fireSpeedCost;
+            SceneTransition.money -= fireSpeedCost;
+            player.money -= fireSpeedCost;
             if (fireSpeedLevel == 18) {
                 child = transform.Find("Image").Find("scrollCanvas").Find("shooterStats").Find("fireSpeed").Find("costButton").Find("moneyScore").gameObject;
                 child.GetComponent<TextMeshPro>().SetText("Max");
@@ -133,12 +147,14 @@ public class UpgradeMenu : MonoBehaviour
         }
     }
     public void upgradeFirePower() {
-        if (GameManager.money >= firePowerCost && firePowerLevel < 999) {
+        if (SceneTransition.money >= firePowerCost && firePowerLevel < 999) {
             // max level is 18
             firePowerLevel++;
             player.power++;
             //Target.fireRate = fireSpeedValues[fireSpeedLevel - 1];
-            GameManager.money -= firePowerCost;
+            SceneTransition.money -= firePowerCost;
+            player.money -= firePowerCost;
+
             if (firePowerLevel == 999) {
 
 
@@ -160,12 +176,14 @@ public class UpgradeMenu : MonoBehaviour
         }
     }
     public void upgradeNumberBalls() {
-        if (GameManager.money >= numberBallsCost && numberBallsLevel < 100) {
+        if (SceneTransition.money >= numberBallsCost && numberBallsLevel < 100) {
             // max level is 18
             numberBallsLevel++;
             player.numberBalls++;
             //Target.fireRate = fireSpeedValues[fireSpeedLevel - 1];
-            GameManager.money -= numberBallsCost;
+            SceneTransition.money -= numberBallsCost;
+            player.money -= numberBallsCost;
+
             if (numberBallsLevel == 100) {
 
 
@@ -195,12 +213,14 @@ public class UpgradeMenu : MonoBehaviour
 
 
     public void upgradeLeftFireball() {
-        if (GameManager.money >= leftFireBallCost && leftNumberBallsLevel < 100) {
+        if (SceneTransition.money >= leftFireBallCost && leftNumberBallsLevel < 100) {
             // max level is 18
             leftNumberBallsLevel++;
             player.leftFireBall++;
             //Target.fireRate = fireSpeedValues[fireSpeedLevel - 1];
-            GameManager.money -= leftFireBallCost;
+            SceneTransition.money -= leftFireBallCost;
+            player.money -= leftFireBallCost;
+
             if (leftNumberBallsLevel == 100) {
                 child = transform.Find("Image").Find("scrollCanvas").Find("skillsPanel").Find("leftFireBall").Find("level").Find("levelText").gameObject;
                 child.GetComponent<TextMeshProUGUI>().SetText(leftNumberBallsLevel.ToString());
@@ -225,12 +245,14 @@ public class UpgradeMenu : MonoBehaviour
     }
 
     public void upgradeRightFireBall() {
-        if (GameManager.money >= rightFireBallCost && rightNumberBallsLevel < 100) {
+        if (SceneTransition.money >= rightFireBallCost && rightNumberBallsLevel < 100) {
             // max level is 18
             rightNumberBallsLevel++;
             player.rightFireBall++;
             //Target.fireRate = fireSpeedValues[fireSpeedLevel - 1];
-            GameManager.money -= rightFireBallCost;
+            SceneTransition.money -= rightFireBallCost;
+            player.money -= rightFireBallCost;
+
             if (rightNumberBallsLevel == 100) {
                 child = transform.Find("Image").Find("scrollCanvas").Find("skillsPanel").Find("rightFireBall").Find("level").Find("levelText").gameObject;
                 child.GetComponent<TextMeshProUGUI>().SetText(rightNumberBallsLevel.ToString());

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ReviveScreen : MonoBehaviour
 {
@@ -21,13 +22,25 @@ public class ReviveScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) {
-            revive();
+
+//        if (Input.GetMouseButtonDown(0)) {
+//            revive();
             /*
             this.transform.gameObject.SetActive(false);
             gameOverPanel.transform.gameObject.SetActive(true);
             */
+    //    }
+
+        if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Began) {
+                 if (IsPointerOverGameObject (Input.GetTouch (0).fingerId)) {
+                         Debug.Log("Hit UI, Ignore Touch");
+                 } else {
+                         Debug.Log("Handle Touch");
+                         this.transform.gameObject.SetActive(false);
+                         gameOverPanel.transform.gameObject.SetActive(true);
+                 }
         }
+
     }
     public void revive() {
         Time.timeScale = 1f;
@@ -64,5 +77,12 @@ public class ReviveScreen : MonoBehaviour
 
 
         this.transform.gameObject.SetActive(false);
+    }
+
+    bool IsPointerOverGameObject( int fingerId )
+    {
+       EventSystem eventSystem = EventSystem.current;
+       return ( eventSystem.IsPointerOverGameObject( fingerId )
+           && eventSystem.currentSelectedGameObject != null );
     }
 }

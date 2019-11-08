@@ -31,6 +31,29 @@ public class Player : MonoBehaviour
     void Awake()
     {
         LoadPlayer();
+        SceneTransition.highScore = highscore;
+        SceneTransition.money = money;
+        if (ballTheme != null ) {
+        SceneTransition.currBall = ballTheme;
+        }
+        if (squareTheme !=null) {
+            SceneTransition.currTheme = squareTheme;
+        }
+
+        UpgradeMenu.firePowerLevel = power;
+        UpgradeMenu.firePowerCost = powerCost;
+
+        UpgradeMenu.fireSpeedLevel = fireRate;
+        UpgradeMenu.fireSpeedCost = fireRateCost;
+
+        UpgradeMenu.numberBallsLevel = numberBalls;
+        UpgradeMenu.numberBallsCost = numberBallsCost;
+
+        UpgradeMenu.leftNumberBallsLevel = leftFireBall;
+        UpgradeMenu.leftFireBallCost = leftFireBallCost;
+
+        UpgradeMenu.rightNumberBallsLevel = rightFireBall;
+        UpgradeMenu.rightFireBallCost = rightFireBallCost;
     }
 
 
@@ -52,7 +75,7 @@ public class Player : MonoBehaviour
         ballTheme = data.ballTheme;
         squareTheme = data.squareTheme;
         muted = data.muted;
-        
+
         money = data.money;
         highscore = data.highscore;
     }

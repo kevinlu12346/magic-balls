@@ -11,15 +11,14 @@ public class GameManager : MonoBehaviour
 
     public static int score;
     public static bool deactivateSpeed = false;
-    public static int highScore = 10000020;
-    public static int money = 99999;
-
+    public Player player;
 
     public GameObject canvas;
     public GameObject fadecanvas;
 
     public static bool frozen = false;
     bool running = false;
+    public static bool playedVideoAD = false;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +29,7 @@ public class GameManager : MonoBehaviour
         child = fadecanvas.transform.Find("panelFadeTransition").gameObject;
         child.SetActive(true);
         StartCoroutine(turnOffCanvas(0.5f));
-
+        playedVideoAD = false;
 
 
     }
@@ -55,13 +54,14 @@ public class GameManager : MonoBehaviour
         }
         if (deactivateSpeed == true) {
             deactivateSpeed = false;
-            BallMovement.multiplier = 2f;
+            BallMovement.multiplier = 3f;
             StartCoroutine(speedDeactivate());
         }
 
         childMoney = canvas.transform.Find("moneyScore").gameObject;
-        childMoney.GetComponent<TextMeshPro>().text = GameManager.money.ToString();
-
+        childMoney.GetComponent<TextMeshPro>().text = SceneTransition.money.ToString();
+        player.money = SceneTransition.money;
+        player.SavePlayer();
 
 
 
@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
     IEnumerator speedDeactivate() {
         yield return new WaitForSeconds(13.0f);
         Debug.Log("Slowed");
-        BallMovement.multiplier = 1f;
+        BallMovement.multiplier = 1.5f;
     }
 
      IEnumerator moveDownDeactivate() {

@@ -2823,6 +2823,18 @@ MonoBehaviour:
   fireRate: 1
   power: 1
   numberBalls: 5
+  powerCost: 30
+  fireRateCost: 20
+  numberBallsCost: 10
+  leftFireBall: 0
+  rightFireBall: 0
+  leftFireBallCost: 20
+  rightFireBallCost: 20
+  ballTheme: greyBall
+  squareTheme: colorful
+  muted: 0
+  highscore: 0
+  money: 0
 --- !u!1 &685418012
 GameObject:
   m_ObjectHideFlags: 0
@@ -4176,11 +4188,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee7a30f2a9c3f8479b8d18b714029b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 641611190}
   camera: {fileID: 0}
   pauseCanvas: {fileID: 0}
   reviveCanvas: {fileID: 0}
   gameOverCanvas: {fileID: 0}
   canvas: {fileID: 0}
+  ga: {fileID: 2142362143}
 --- !u!1 &1001025579
 GameObject:
   m_ObjectHideFlags: 0
@@ -9556,6 +9570,49 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2142362141
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2142362142}
+  - component: {fileID: 2142362143}
+  m_Layer: 0
+  m_Name: googlead
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2142362142
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142362141}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.55039, y: 1.4767569, z: -3.369061}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2142362143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142362141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c92998dff42045741a79af55c228dfcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2145512042
 GameObject:
   m_ObjectHideFlags: 0

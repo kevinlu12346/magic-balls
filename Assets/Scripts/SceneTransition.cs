@@ -14,6 +14,7 @@ using UnityEngine.EventSystems;
     public GameObject reviveCanvas;
     public GameObject gameOverCanvas;
     public GameObject canvas;
+    public googleads ga;
 
     private GameObject child;
     public static bool gameOver = false;
@@ -21,6 +22,9 @@ using UnityEngine.EventSystems;
     public static string currBall = "greyBall";
     public static string currTheme = "colorful";
     public static bool muted = false;
+    private bool x = false;
+    public static int highScore = 0;
+    public static int money = 0;
     public void LoadCredits() {
         SceneManager.LoadScene(4);
 
@@ -30,8 +34,8 @@ using UnityEngine.EventSystems;
     }
 
     public void loadGame() {
-        if (GameManager.score > GameManager.highScore) {
-            GameManager.highScore = GameManager.score;
+        if (GameManager.score > SceneTransition.highScore) {
+            SceneTransition.highScore = GameManager.score;
         }
 
         SceneManager.LoadScene(0);
@@ -43,15 +47,14 @@ using UnityEngine.EventSystems;
 
     void Awake()
     {
-        Debug.Log(player.squareTheme);
+
         gameOver = false;
-        if (player.ballTheme != null ) {
-        currBall = player.ballTheme;
-        }
-        if (player.squareTheme !=null) {
-            currTheme = player.squareTheme;
-        }
+
+        x = false;
+        StartCoroutine(turnOffx(0.5f));
+
     }
+
     void Update()
     {
         //Debug.Log("ball is " + currBall);
@@ -107,7 +110,8 @@ using UnityEngine.EventSystems;
       */
       Scene scene = SceneManager.GetActiveScene();
 
-      if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Began && scene.buildIndex == 0) {
+
+      if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Began && scene.buildIndex == 0 && x == true) {
                if (IsPointerOverGameObject (Input.GetTouch (0).fingerId)) {
                        Debug.Log("Hit UI, Ignore Touch");
                } else {
@@ -120,8 +124,8 @@ using UnityEngine.EventSystems;
 
 
 
-
-        if (gameOver == true) {
+        if (gameOver == true && GameManager.playedVideoAD == false) {
+            Debug.Log("game over");
             gameOver = false;
             child = reviveCanvas.transform.Find("revivePanel").gameObject;
             child.SetActive(true);
@@ -133,6 +137,17 @@ using UnityEngine.EventSystems;
 
             Shape.moveDownEndGame = false;
             //StartCoroutine(loadEndGamePanel());
+        } else if (gameOver == true && GameManager.playedVideoAD == true) {
+            gameOver = false;
+            child = gameOverCanvas.transform.Find("gameOverPanel").gameObject;
+            child.SetActive(true);
+            camera.GetComponent<Target>().enabled = false;
+            camera.GetComponent<TargetRight>().enabled = false;
+            camera.GetComponent<TargetLeft>().enabled = false;
+            //child = canvas.transform.Find("Game").gameObject;
+            //child.SetActive(false);
+
+            Shape.moveDownEndGame = false;
         }
         /*
         if (Input.GetMouseButtonDown(0)) {
@@ -162,7 +177,11 @@ using UnityEngine.EventSystems;
              child = reviveCanvas.transform.Find("revivePanel").gameObject;
              child.SetActive(false);
          }
-
+         IEnumerator turnOffx(float seconds) {
+             yield return new WaitForSeconds(seconds);
+             x = true;
+         }
+         public
 
          bool IsPointerOverGameObject( int fingerId )
          {

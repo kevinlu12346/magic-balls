@@ -36,15 +36,15 @@ Debug.Log(SceneTransition.muted);
         }
 
         child = game.transform.Find("highscore").gameObject;
-        child.GetComponent<TextMeshProUGUI>().SetText(GameManager.highScore.ToString());
+        child.GetComponent<TextMeshProUGUI>().SetText(SceneTransition.highScore.ToString());
 
 
         child = game.transform.Find("moneyScore").gameObject;
-        child.GetComponent<TextMeshPro>().text = GameManager.money.ToString();
+        child.GetComponent<TextMeshPro>().text = SceneTransition.money.ToString();
         // reset game variables
         Time.timeScale = 1f;
         PlayerController.firePower = PlayerController.firePowerAlgorithm;
-        BallMovement.multiplier = 4f; // this one to change ball movement speed
+        BallMovement.multiplier = 1.5f; // this one to change ball movement speed
         Shape.moveDown = true;
         DeployShapes.running = true;
         Target.isPower = false;

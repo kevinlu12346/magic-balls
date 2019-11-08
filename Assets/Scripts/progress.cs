@@ -14,13 +14,13 @@ public class progress : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (GameManager.highScore < health) {
-            Text.GetComponent<TextMeshProUGUI>().SetText(AbbrevationUtility.AbbreviateNumber(GameManager.highScore)+ "/" + AbbrevationUtility.AbbreviateNumber(health));
+        if (SceneTransition.highScore < health) {
+            Text.GetComponent<TextMeshProUGUI>().SetText(AbbrevationUtility.AbbreviateNumber(SceneTransition.highScore)+ "/" + AbbrevationUtility.AbbreviateNumber(health));
         } else {
             Text.GetComponent<TextMeshProUGUI>().SetText(AbbrevationUtility.AbbreviateNumber(health)+ "/" + AbbrevationUtility.AbbreviateNumber(health));
         }
-        Slider.value = GameManager.highScore/health;
-        if (GameManager.highScore >= health) {
+        Slider.value = SceneTransition.highScore/health;
+        if (SceneTransition.highScore >= health) {
             Ball.GetComponent<Button>().enabled = true;
         }
     }

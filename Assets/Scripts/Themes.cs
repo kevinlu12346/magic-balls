@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class Themes : MonoBehaviour
 {
     private GameObject child;
     public Player player;
+
     // Start is called before the first frame update
     public GameObject fadecanvas;
     public void ballPage() {
@@ -20,8 +21,10 @@ public class Themes : MonoBehaviour
     {
         StartCoroutine(turnOffCanvas(0.5f));
         //currSelectedBall= transform.Find("Panel").Find("Objects").Find("BallPanel").Find("greyBall").gameObject;
-
-
+/*
+        child = game.transform.Find("moneyScore").gameObject;
+        child.GetComponent<TextMeshPro>().text = SceneTransition.money.ToString();
+*/
         //on pageLoad select currBall and show it is on by turning it green
         child = transform.Find("Panel").Find("Objects").Find("BallPanel").Find("balls").Find(SceneTransition.currBall).Find("selected").gameObject;
         child.GetComponent<SpriteRenderer>().color =  new Color32(36, 183, 55, 255);
